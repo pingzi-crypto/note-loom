@@ -1,7 +1,7 @@
 {
   "name": "note-loom",
   "version": "0.1.0",
-  "description": "Weave free-form notes into structured Obsidian notes with your own templates, fields, tables, and checklists.",
+  "description": "Weave free-form notes into structured notes with your own templates, fields, tables, and checklists.",
   "author": "pingzi-crypto",
   "main": "main.js",
   "type": "module",
