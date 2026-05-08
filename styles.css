@@ -1,0 +1,3089 @@
+.note-loom-modal .modal-content {
+  overflow-x: hidden;
+}
+
+.note-loom-modal-content {
+  box-sizing: border-box;
+  padding: 18px 0 22px;
+}
+
+.note-loom-template-config-modal {
+  width: 760px;
+  max-width: calc(100vw - 48px);
+}
+
+.note-loom-generate-modal {
+  width: 780px;
+  max-width: calc(100vw - 48px);
+  --note-loom-generate-copy-font-size: var(--note-loom-modal-copy-font-size);
+  --note-loom-generate-copy-line-height: var(--note-loom-modal-copy-line-height);
+  --note-loom-generate-copy-font-weight: var(--note-loom-modal-copy-font-weight);
+  --note-loom-generate-divider-color: color-mix(
+    in srgb,
+    var(--background-modifier-border) 70%,
+    transparent
+  );
+  --note-loom-generate-content-gap-sm: 4px;
+  --note-loom-generate-content-gap-md: 10px;
+  --note-loom-generate-content-gap-lg: 12px;
+  --note-loom-generate-inline-padding: 16px;
+  --note-loom-generate-action-min-width: 112px;
+  --note-loom-generate-summary-count-align: right;
+  --note-loom-generate-summary-count-white-space: nowrap;
+  --note-loom-generate-learning-detail-columns: minmax(0, 160px) minmax(0, 1fr);
+  --note-loom-generate-learning-detail-row-gap: 0;
+  --note-loom-generate-run-diff-row-columns:
+    minmax(0, var(--note-loom-card-left-column))
+    minmax(0, var(--note-loom-card-middle-gap))
+    minmax(0, var(--note-loom-card-right-column));
+  --note-loom-generate-run-diff-row-gap: 0;
+  --note-loom-generate-run-diff-row-align-items: stretch;
+  --note-loom-generate-run-diff-row-padding: 0 var(--note-loom-generate-inline-padding);
+  --note-loom-generate-run-diff-cell-min-height: 96px;
+  --note-loom-generate-run-diff-cell-padding-inline: 12px;
+  --note-loom-generate-run-diff-cell-justify: center;
+  --note-loom-generate-pending-state-columns: minmax(0, 1fr) auto;
+  --note-loom-generate-pending-state-row-gap: 0;
+  --note-loom-generate-pending-state-actions-justify: flex-end;
+  --note-loom-generate-integrity-row-columns: minmax(0, 1fr) auto;
+  --note-loom-generate-integrity-row-gap: 0;
+  --note-loom-generate-field-row-block-padding: 12px;
+  --note-loom-generate-field-row-height: 108px;
+  --note-loom-section-note-margin-bottom: 4px;
+  --note-loom-preview-width: 100%;
+  --note-loom-preview-min-height: 260px;
+  --note-loom-preview-padding: 14px 16px;
+  --note-loom-preview-border-radius: 14px;
+  --note-loom-preview-background: transparent;
+  --note-loom-preview-overflow-x: hidden;
+  --note-loom-preview-overflow-y: auto;
+  --note-loom-preview-resize: vertical;
+}
+
+.note-loom-settings,
+.note-loom-modal {
+  --note-loom-card-radius: 12px;
+  --note-loom-settings-inset: 20px;
+  --note-loom-modal-copy-font-size: 14px;
+  --note-loom-modal-copy-line-height: 1.4;
+  --note-loom-modal-copy-font-weight: 400;
+  --note-loom-control-height: 32px;
+  --note-loom-control-font-size: 14px;
+  --note-loom-control-radius: 8px;
+  --note-loom-section-note-font-size: 13px;
+  --note-loom-section-note-line-height: 1.4;
+  --note-loom-section-note-font-weight: 400;
+  --note-loom-section-note-margin-bottom: 10px;
+  --note-loom-panel-surface: color-mix(
+    in srgb,
+    var(--background-primary) 92%,
+    var(--background-secondary) 8%
+  );
+  --note-loom-panel-surface-hover: color-mix(
+    in srgb,
+    var(--background-primary) 88%,
+    var(--background-secondary) 12%
+  );
+  --note-loom-panel-border: color-mix(
+    in srgb,
+    var(--background-modifier-border) 88%,
+    transparent
+  );
+  --note-loom-panel-shadow: none;
+  --note-loom-panel-shadow-hover: none;
+  --note-loom-control-border: color-mix(
+    in srgb,
+    var(--background-modifier-border) 86%,
+    transparent
+  );
+  --note-loom-control-surface: color-mix(
+    in srgb,
+    white 86%,
+    var(--background-primary) 14%
+  );
+  --note-loom-control-surface-hover: color-mix(
+    in srgb,
+    white 90%,
+    var(--background-primary) 10%
+  );
+  --note-loom-control-shadow: none;
+  --note-loom-control-shadow-hover:
+    0 1px 2px color-mix(in srgb, var(--background-modifier-box-shadow) 20%, transparent),
+    0 6px 14px color-mix(in srgb, var(--background-modifier-box-shadow) 18%, transparent);
+  --note-loom-control-shadow-pressed: none;
+  --note-loom-cta-shadow-hover:
+    0 1px 2px color-mix(in srgb, var(--interactive-accent) 20%, transparent),
+    0 6px 14px color-mix(in srgb, var(--interactive-accent) 24%, transparent);
+  --note-loom-warning-shadow-hover:
+    0 1px 2px color-mix(in srgb, var(--text-error) 12%, transparent),
+    0 4px 10px color-mix(in srgb, var(--text-error) 12%, transparent);
+  --note-loom-group-surface: color-mix(
+    in srgb,
+    var(--background-secondary) 34%,
+    var(--background-primary) 66%
+  );
+  --note-loom-card-left-column: 320px;
+  --note-loom-card-middle-gap: 120px;
+  --note-loom-card-right-column: 500px;
+}
+
+.note-loom-modal {
+  --note-loom-section-note-font-size: var(--note-loom-modal-copy-font-size);
+  --note-loom-section-note-line-height: var(--note-loom-modal-copy-line-height);
+  --note-loom-section-note-font-weight: var(--note-loom-modal-copy-font-weight);
+  --note-loom-section-note-margin-bottom: 8px;
+}
+
+.note-loom-settings .setting-item.setting-item-heading {
+  padding: 0 var(--note-loom-settings-inset);
+  margin: 0 0 8px;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.note-loom-settings .setting-item.setting-item-heading:first-of-type {
+  margin-top: 0;
+}
+
+.note-loom-settings .setting-item.setting-item-heading:not(:first-of-type) {
+  margin-top: 16px;
+}
+
+.note-loom-settings .setting-item.setting-item-heading .setting-item-info {
+  padding-right: 0;
+}
+
+.note-loom-settings .setting-item.setting-item-heading .setting-item-name {
+  font-size: 15px;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.note-loom-settings .setting-item.setting-item-heading .setting-item-description,
+.note-loom-settings .setting-item.setting-item-heading .setting-item-control {
+  display: none;
+}
+
+.note-loom-settings > p,
+.note-loom-modal .modal-content > p,
+.note-loom-modal .modal-content > div.note-loom-modal-footer {
+  box-sizing: border-box;
+  padding-left: var(--note-loom-settings-inset);
+  padding-right: var(--note-loom-settings-inset);
+}
+
+.note-loom-modal-title,
+.note-loom-modal-heading {
+  box-sizing: border-box;
+  padding-left: calc(var(--note-loom-settings-inset) + 16px);
+  padding-right: calc(var(--note-loom-settings-inset) + 16px);
+}
+
+.note-loom-modal-title {
+  margin: 0 0 12px;
+  font-size: 16px;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.note-loom-modal-heading {
+  margin: 18px 0 8px;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: var(--text-normal);
+}
+
+.note-loom-section-note {
+  max-width: 820px;
+  margin-top: 0;
+  margin-bottom: var(--note-loom-section-note-margin-bottom, 10px);
+  font-size: var(--note-loom-section-note-font-size, 13px);
+  color: var(--text-muted);
+  line-height: var(--note-loom-section-note-line-height, 1.4);
+  font-weight: var(--note-loom-section-note-font-weight, 400);
+}
+
+.note-loom-note-row .setting-item-info {
+  padding-right: 0;
+}
+
+.note-loom-note-row .setting-item-name.note-loom-note-row-text {
+  width: 100%;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: var(--text-muted);
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.note-loom-settings .setting-item,
+.note-loom-modal .setting-item {
+  position: relative;
+  align-items: flex-start;
+  border: 0;
+  padding: 12px 16px;
+  margin-bottom: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transition: none;
+}
+
+.note-loom-settings .setting-item:hover,
+.note-loom-modal .setting-item:hover {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.note-loom-setting-group {
+  margin-bottom: 8px;
+  border: 1px solid var(--note-loom-panel-border);
+  border-radius: var(--note-loom-card-radius);
+  background: var(--note-loom-group-surface);
+  box-shadow: var(--note-loom-panel-shadow);
+  overflow: hidden;
+}
+
+.note-loom-setting-group .setting-item {
+  position: relative;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.note-loom-setting-group .setting-item:hover {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.note-loom-setting-group .setting-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 0;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--background-modifier-border) 72%, transparent);
+}
+
+.note-loom-setting-group > p {
+  margin: 0;
+  padding: 12px 16px;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.note-loom-modal .setting-item {
+  padding: 12px 16px;
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+.note-loom-template-config-modal .setting-item {
+  padding: 12px 16px;
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+.note-loom-generate-modal .setting-item {
+  padding: 12px 16px;
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+.note-loom-settings .setting-item-info,
+.note-loom-modal .setting-item-info {
+  padding-right: 16px;
+  min-width: 0;
+}
+
+.note-loom-info-stack {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  justify-content: stretch;
+  height: 100%;
+}
+
+.note-loom-info-stack:not(:has(> .setting-item-description:not(:empty), > .note-loom-info-stack-line + .note-loom-info-stack-line)) {
+  justify-content: center;
+}
+
+.note-loom-info-stack > .setting-item-name,
+.note-loom-info-stack > .setting-item-description,
+.note-loom-info-stack > .note-loom-info-stack-line {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  min-height: 0;
+  margin: 0;
+}
+
+.note-loom-info-stack > .setting-item-description:empty,
+.note-loom-info-stack > .note-loom-info-stack-desc:empty {
+  display: none;
+  flex: 0 0 auto;
+}
+
+.note-loom-card-row {
+  align-items: stretch !important;
+}
+
+.note-loom-card-row.note-loom-card-row-single-left {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+.note-loom-card-row.note-loom-card-row-single-left .note-loom-card-control {
+  display: none !important;
+}
+
+.note-loom-card-row.note-loom-card-row-single-left .setting-item-info {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: none !important;
+  padding-right: 0;
+}
+
+.note-loom-card-row.note-loom-card-row-single-right {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+.note-loom-card-row.note-loom-card-row-single-right .note-loom-card-info {
+  display: none !important;
+}
+
+.note-loom-card-row.note-loom-card-row-single-right .setting-item-control {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: none !important;
+  justify-self: stretch;
+}
+
+.note-loom-settings .setting-item-control,
+.note-loom-modal .setting-item-control {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.note-loom-settings .setting-item-control {
+  align-self: center;
+}
+
+.note-loom-modal .setting-item-control {
+  align-self: center;
+}
+
+.note-loom-settings .setting-item-control > button,
+.note-loom-settings .setting-item-control > .clickable-icon,
+.note-loom-settings .setting-item-control > select,
+.note-loom-modal .setting-item-control > button,
+.note-loom-modal .setting-item-control > .clickable-icon,
+.note-loom-modal .setting-item-control > select,
+.note-loom-settings button:not(.clickable-icon):not(.modal-close-button),
+.note-loom-modal .modal-content button:not(.clickable-icon):not(.modal-close-button),
+.note-loom-settings select,
+.note-loom-modal .modal-content select,
+.note-loom-modal-footer > button {
+  min-height: var(--note-loom-control-height);
+  font-size: var(--note-loom-control-font-size);
+  border-radius: var(--note-loom-control-radius);
+}
+
+.note-loom-settings .setting-item-control > button,
+.note-loom-modal .setting-item-control > button,
+.note-loom-settings button:not(.clickable-icon):not(.modal-close-button),
+.note-loom-modal .modal-content button:not(.clickable-icon):not(.modal-close-button),
+.note-loom-modal-footer > button {
+  min-width: 64px;
+  padding: 0 14px;
+  line-height: 1.2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}
+
+.note-loom-settings .setting-item-control input[type="text"],
+.note-loom-settings .setting-item-control select,
+.note-loom-modal .setting-item-control input[type="text"],
+.note-loom-modal .setting-item-control select {
+  box-sizing: border-box;
+  width: 100%;
+  inline-size: 100%;
+  min-width: 0;
+  max-width: 100%;
+  max-inline-size: 100%;
+  min-height: var(--note-loom-control-height);
+  font-size: var(--note-loom-control-font-size);
+  border-radius: var(--note-loom-control-radius);
+}
+
+.note-loom-settings select,
+.note-loom-modal .modal-content select {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.note-loom-settings select option,
+.note-loom-modal .modal-content select option {
+  max-width: 100%;
+}
+
+.note-loom-settings .setting-item-control > button,
+.note-loom-modal .setting-item-control > button,
+.note-loom-modal-footer > button,
+.note-loom-settings .setting-item-control > select,
+.note-loom-modal .setting-item-control > select,
+.note-loom-settings button:not(.clickable-icon):not(.modal-close-button),
+.note-loom-modal .modal-content button:not(.clickable-icon):not(.modal-close-button),
+.note-loom-settings select,
+.note-loom-modal .modal-content select {
+  border: 1px solid var(--note-loom-control-border);
+  background: var(--note-loom-control-surface);
+  box-shadow:
+    0 1px 1px color-mix(in srgb, var(--background-modifier-box-shadow) 10%, transparent),
+    0 2px 6px color-mix(in srgb, var(--background-modifier-box-shadow) 8%, transparent);
+  transition: background-color 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.note-loom-settings .setting-item-control > button:hover,
+.note-loom-modal .setting-item-control > button:hover,
+.note-loom-modal-footer > button:hover,
+.note-loom-settings button:not(.clickable-icon):not(.modal-close-button):hover,
+.note-loom-modal .modal-content button:not(.clickable-icon):not(.modal-close-button):hover {
+  background: color-mix(in srgb, white 92%, var(--background-primary) 8%);
+  border-color: color-mix(
+    in srgb,
+    var(--background-modifier-border) 78%,
+    white 22%
+  );
+  color: var(--text-normal);
+  box-shadow: var(--note-loom-control-shadow-hover);
+}
+
+.note-loom-settings .setting-item-control > select:hover,
+.note-loom-modal .setting-item-control > select:hover,
+.note-loom-settings select:hover,
+.note-loom-modal .modal-content select:hover {
+  background: var(--note-loom-control-surface-hover);
+  border-color: color-mix(
+    in srgb,
+    var(--background-modifier-border) 82%,
+    white 18%
+  );
+  box-shadow: var(--note-loom-control-shadow-hover);
+}
+
+.note-loom-settings .setting-item-control > button:active,
+.note-loom-modal .setting-item-control > button:active,
+.note-loom-modal-footer > button:active,
+.note-loom-settings button:not(.clickable-icon):not(.modal-close-button):active,
+.note-loom-modal .modal-content button:not(.clickable-icon):not(.modal-close-button):active {
+  transform: none;
+  box-shadow: none;
+}
+
+.note-loom-settings .setting-item-control > button.mod-cta,
+.note-loom-modal .setting-item-control > button.mod-cta,
+.note-loom-settings button.mod-cta:not(.clickable-icon):not(.modal-close-button),
+.note-loom-modal .modal-content button.mod-cta:not(.clickable-icon):not(.modal-close-button),
+.note-loom-modal-footer > button.mod-cta {
+  border-color: color-mix(in srgb, var(--interactive-accent) 74%, black 10%);
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  box-shadow: none;
+}
+
+.note-loom-settings .setting-item-control > button.mod-cta:hover,
+.note-loom-modal .setting-item-control > button.mod-cta:hover,
+.note-loom-settings button.mod-cta:not(.clickable-icon):not(.modal-close-button):hover,
+.note-loom-modal .modal-content button.mod-cta:not(.clickable-icon):not(.modal-close-button):hover,
+.note-loom-modal-footer > button.mod-cta:hover {
+  background: color-mix(in srgb, var(--interactive-accent) 92%, white 8%);
+  border-color: color-mix(in srgb, var(--interactive-accent) 70%, black 12%);
+  box-shadow: var(--note-loom-cta-shadow-hover);
+}
+
+.note-loom-settings .setting-item-control > button.mod-warning,
+.note-loom-modal .setting-item-control > button.mod-warning,
+.note-loom-settings button.mod-warning:not(.clickable-icon):not(.modal-close-button),
+.note-loom-modal .modal-content button.mod-warning:not(.clickable-icon):not(.modal-close-button),
+.note-loom-modal-footer > button.mod-warning {
+  border-color: color-mix(in srgb, var(--text-error) 18%, var(--background-modifier-border) 82%);
+  background: color-mix(in srgb, var(--text-error) 10%, var(--background-primary) 90%);
+  color: color-mix(in srgb, var(--text-error) 76%, var(--text-normal) 24%);
+  box-shadow: none;
+}
+
+.note-loom-settings .setting-item-control > button.mod-warning:hover,
+.note-loom-modal .setting-item-control > button.mod-warning:hover,
+.note-loom-settings button.mod-warning:not(.clickable-icon):not(.modal-close-button):hover,
+.note-loom-modal .modal-content button.mod-warning:not(.clickable-icon):not(.modal-close-button):hover,
+.note-loom-modal-footer > button.mod-warning:hover {
+  border-color: color-mix(in srgb, var(--text-error) 24%, var(--background-modifier-border) 76%);
+  background: color-mix(in srgb, var(--text-error) 14%, var(--interactive-hover) 86%);
+  color: color-mix(in srgb, var(--text-error) 82%, var(--text-normal) 18%);
+  box-shadow: var(--note-loom-warning-shadow-hover);
+}
+
+.note-loom-settings .setting-item-control > select,
+.note-loom-modal .setting-item-control > select,
+.note-loom-settings select,
+.note-loom-modal .modal-content select {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.note-loom-settings button:not(.clickable-icon):not(.modal-close-button):disabled,
+.note-loom-modal .modal-content button:not(.clickable-icon):not(.modal-close-button):disabled,
+.note-loom-settings select:disabled,
+.note-loom-modal .modal-content select:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.note-loom-path-setting .setting-item-control {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: min(100%, 500px);
+}
+
+.note-loom-path-setting {
+  display: block;
+}
+
+.note-loom-settings .note-loom-path-setting {
+  display: flex;
+  align-items: center;
+}
+
+.note-loom-modal .note-loom-path-setting {
+  display: flex;
+  align-items: center;
+}
+
+.note-loom-path-setting .setting-item-info {
+  padding-right: 0;
+  margin-bottom: 4px;
+}
+
+.note-loom-settings .note-loom-path-setting .setting-item-info {
+  margin-bottom: 0;
+  padding-right: 16px;
+}
+
+.note-loom-modal .note-loom-path-setting .setting-item-info {
+  margin-bottom: 0;
+  padding-right: 16px;
+}
+
+.note-loom-path-setting .setting-item-control input[type="text"],
+.note-loom-path-setting .setting-item-control select {
+  width: 100%;
+}
+
+.note-loom-path-setting .setting-item-control button {
+  align-self: flex-end;
+}
+
+.note-loom-settings .note-loom-path-setting .setting-item-control {
+  align-self: center;
+}
+
+.note-loom-modal .note-loom-path-setting .setting-item-control {
+  align-self: center;
+}
+
+.note-loom-setting-group .note-loom-path-setting {
+  display: flex;
+}
+
+.note-loom-setting-group .note-loom-path-setting .setting-item-info {
+  margin-bottom: 0;
+}
+
+.note-loom-setting-group .note-loom-path-setting .setting-item-control {
+  width: min(100%, 460px);
+}
+
+.note-loom-form-group .setting-item-control input[type="text"],
+.note-loom-form-group .setting-item-control select {
+  width: 100%;
+}
+
+.note-loom-toggle-group .setting-item {
+  align-items: center;
+}
+
+.note-loom-toggle-group .setting-item-info {
+  padding-right: 20px;
+}
+
+.note-loom-toggle-group .setting-item-control {
+  min-width: 72px;
+}
+
+.note-loom-template-item .setting-item-info {
+  width: 100%;
+  min-width: 0;
+}
+
+.note-loom-template-item .setting-item-name {
+  font-weight: 500;
+  color: var(--text-normal);
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  line-height: 1.35;
+}
+
+.note-loom-template-item .note-loom-info-stack > .setting-item-name,
+.note-loom-template-item .note-loom-info-stack > .setting-item-description,
+.note-loom-template-item .note-loom-info-stack > .note-loom-info-stack-line {
+  display: block;
+  flex: 0 0 auto;
+  width: 100%;
+  min-width: 0;
+}
+
+.note-loom-template-item .setting-item-control {
+  align-items: center;
+  gap: 8px;
+}
+
+.note-loom-toolbar-item .setting-item-control {
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+}
+
+.note-loom-toolbar-item .setting-item-control > button {
+  min-width: 62px;
+  padding-inline: 10px;
+}
+
+.note-loom-toolbar-item .setting-item-control > .checkbox-container {
+  margin-right: 4px;
+}
+
+.note-loom-template-item .setting-item-control .checkbox-container,
+.note-loom-template-item .setting-item-control .checkbox-container.is-enabled {
+  margin-right: 2px;
+}
+
+.note-loom-settings .note-loom-three-column-group .setting-item {
+  display: grid;
+  grid-template-columns:
+    minmax(0, var(--note-loom-card-left-column))
+    var(--note-loom-card-middle-gap)
+    minmax(0, var(--note-loom-card-right-column));
+  align-items: stretch;
+}
+
+.note-loom-settings .note-loom-three-column-group .setting-item .setting-item-info {
+  grid-column: 1;
+  width: 100%;
+  max-width: var(--note-loom-card-left-column);
+  min-width: 0;
+  padding-right: 14px;
+}
+
+.note-loom-settings .note-loom-three-column-group .setting-item .setting-item-control {
+  grid-column: 3;
+  width: 100%;
+  max-width: var(--note-loom-card-right-column);
+  min-width: 0;
+  justify-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.note-loom-settings .note-loom-three-column-group .note-loom-template-item {
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 24px;
+}
+
+.note-loom-settings .note-loom-three-column-group .note-loom-template-item .setting-item-info {
+  grid-column: 1;
+  max-width: none;
+  padding-right: 0;
+}
+
+.note-loom-settings .note-loom-three-column-group .note-loom-template-item .setting-item-control {
+  grid-column: 2;
+  width: auto;
+  max-width: none;
+  justify-self: end;
+}
+
+.note-loom-settings .note-loom-three-column-group .setting-item .setting-item-control > select,
+.note-loom-settings .note-loom-three-column-group .setting-item .setting-item-control > input[type="text"] {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.note-loom-settings .note-loom-three-column-group .setting-item .setting-item-description {
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.note-loom-settings .note-loom-three-column-group .note-loom-info-stack > .setting-item-name,
+.note-loom-settings
+  .note-loom-three-column-group
+  .note-loom-info-stack
+  > .setting-item-description,
+.note-loom-settings
+  .note-loom-three-column-group
+  .note-loom-info-stack
+  > .note-loom-info-stack-line {
+  display: block;
+  flex: 0 0 auto;
+  width: 100%;
+  min-width: 0;
+}
+
+.note-loom-settings .note-loom-three-column-group .setting-item .setting-item-name {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+.note-loom-settings .note-loom-three-column-group .note-loom-path-setting {
+  display: grid;
+}
+
+.note-loom-settings .note-loom-three-column-group .note-loom-path-setting .setting-item-control {
+  align-self: stretch;
+}
+
+.note-loom-settings .note-loom-three-column-group .note-loom-form-group .setting-item-control,
+.note-loom-settings .note-loom-three-column-group.note-loom-form-group .setting-item-control {
+  justify-content: stretch;
+}
+
+.note-loom-settings .note-loom-three-column-group .note-loom-form-group .setting-item .setting-item-control:has(> button:only-child),
+.note-loom-settings .note-loom-three-column-group.note-loom-form-group .setting-item .setting-item-control:has(> button:only-child) {
+  justify-content: flex-end;
+}
+
+.note-loom-settings .note-loom-three-column-group .note-loom-toggle-group .setting-item-control,
+.note-loom-settings .note-loom-three-column-group.note-loom-toggle-group .setting-item-control {
+  justify-content: flex-end;
+}
+
+.note-loom-settings .note-loom-three-column-group.note-loom-toggle-group .setting-item {
+  grid-template-columns: minmax(0, 420px) minmax(32px, 1fr) auto;
+}
+
+.note-loom-settings
+  .note-loom-three-column-group.note-loom-toggle-group
+  .setting-item
+  .setting-item-info {
+  max-width: 420px;
+}
+
+.note-loom-settings
+  .note-loom-three-column-group.note-loom-toggle-group
+  .setting-item
+  .setting-item-control {
+  width: auto;
+  max-width: none;
+  justify-self: end;
+}
+
+.note-loom-template-desc {
+  display: grid;
+  gap: 3px;
+}
+
+.note-loom-template-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.note-loom-template-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: auto;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.note-loom-template-badge + .note-loom-template-badge {
+  position: relative;
+  padding-left: 12px;
+}
+
+.note-loom-template-badge + .note-loom-template-badge::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--text-faint);
+}
+
+.note-loom-compact-setting {
+  padding-block: 12px !important;
+  margin-bottom: 0 !important;
+}
+
+.note-loom-compact-setting .setting-item-info {
+  align-self: center;
+}
+
+.note-loom-compact-setting .setting-item-control {
+  min-width: 180px;
+}
+
+.note-loom-compact-setting .setting-item-description {
+  font-size: 14px;
+}
+
+.note-loom-action-setting {
+  padding-block: 12px !important;
+}
+
+.note-loom-action-setting .setting-item-control > button {
+  min-width: 112px;
+}
+
+.note-loom-template-config-modal .setting-item-info {
+  padding-right: 18px;
+}
+
+.note-loom-template-config-modal {
+  --note-loom-card-left-column: 320px;
+  --note-loom-card-middle-gap: 120px;
+  --note-loom-card-right-column: 500px;
+}
+
+.note-loom-generate-modal .setting-item-info {
+  padding-right: 18px;
+}
+
+.note-loom-generate-modal .setting-item-name {
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+  font-weight: 400 !important;
+}
+
+.note-loom-generate-modal .setting-item-description {
+  font-size: var(--note-loom-generate-copy-font-size);
+  line-height: var(--note-loom-generate-copy-line-height);
+  font-weight: var(--note-loom-generate-copy-font-weight);
+}
+
+.note-loom-generate-modal .note-loom-field-trace {
+  margin-top: 4px;
+  font-size: var(--note-loom-generate-copy-font-size);
+  line-height: var(--note-loom-generate-copy-line-height);
+  font-weight: var(--note-loom-generate-copy-font-weight);
+  color: var(--text-muted);
+}
+
+.note-loom-generate-modal .note-loom-modal-footer > button {
+  border-radius: var(--note-loom-control-radius) !important;
+  border: 1px solid var(--note-loom-control-border) !important;
+  box-shadow: none !important;
+}
+
+.note-loom-generate-modal .note-loom-modal-footer > button.mod-cta {
+  border-radius: var(--note-loom-control-radius) !important;
+}
+
+.note-loom-modal .note-loom-modal-section {
+  margin-inline: var(--note-loom-settings-inset);
+  margin-bottom: 10px;
+  padding: 6px 16px;
+  border: 1px solid color-mix(in srgb, var(--background-modifier-border) 78%, transparent);
+  border-radius: var(--note-loom-card-radius);
+  background: var(--note-loom-group-surface);
+  overflow: hidden;
+}
+
+.note-loom-modal .note-loom-modal-section .setting-item:not(.note-loom-field-row):not(.note-loom-template-field-item) {
+  position: relative;
+  margin: 0;
+  padding: 12px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.note-loom-modal .note-loom-modal-section .setting-item:not(.note-loom-field-row):not(.note-loom-template-field-item):hover {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.note-loom-modal .note-loom-modal-section .setting-item:not(.note-loom-field-row):not(.note-loom-template-field-item):not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--background-modifier-border) 70%, transparent);
+}
+
+.note-loom-modal .note-loom-modal-section > .note-loom-section-note {
+  margin: 0;
+  padding: 0 0 14px;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.note-loom-modal .note-loom-modal-section > .note-loom-section-note:last-child {
+  padding-bottom: 4px;
+}
+
+.note-loom-generate-modal .note-loom-section-summary-note {
+  position: relative;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.note-loom-generate-modal .note-loom-section-summary-note .setting-item-info {
+  width: 100%;
+  max-width: none;
+  padding-right: 0;
+}
+
+.note-loom-generate-modal .note-loom-section-summary-note .note-loom-info-stack {
+  display: block;
+  height: auto;
+}
+
+.note-loom-generate-modal .note-loom-section-summary-note .setting-item-name.note-loom-note-row-text {
+  display: block;
+  width: 100%;
+  font-size: var(--note-loom-generate-copy-font-size);
+  line-height: var(--note-loom-generate-copy-line-height);
+  font-weight: var(--note-loom-generate-copy-font-weight);
+  color: var(--text-muted);
+}
+
+.note-loom-generate-modal .note-loom-section-summary-note::after {
+  display: none;
+}
+
+.note-loom-template-config-modal .setting-item-control > button,
+.note-loom-template-config-modal .setting-item-control > select,
+.note-loom-template-config-modal .note-loom-semantic-split-controls > button,
+.note-loom-template-config-modal .note-loom-semantic-split-controls > select,
+.note-loom-template-config-modal .note-loom-semantic-split-controls input[type="text"],
+.note-loom-template-config-modal .setting-item-control input[type="text"] {
+  border-color: var(--note-loom-control-border);
+  min-height: var(--note-loom-control-height);
+  font-size: var(--note-loom-control-font-size);
+  box-shadow: none;
+}
+
+.note-loom-template-config-modal .setting-item-control > button:hover,
+.note-loom-template-config-modal .setting-item-control > select:hover,
+.note-loom-template-config-modal .note-loom-semantic-split-controls > button:hover,
+.note-loom-template-config-modal .note-loom-semantic-split-controls > select:hover,
+.note-loom-template-config-modal .note-loom-semantic-split-controls input[type="text"]:hover,
+.note-loom-template-config-modal .setting-item-control input[type="text"]:hover {
+  box-shadow: var(--note-loom-control-shadow-hover);
+}
+
+.note-loom-template-config-modal .setting-item-control > select,
+.note-loom-template-config-modal .note-loom-semantic-split-controls > select,
+.note-loom-template-config-modal .note-loom-semantic-split-controls input[type="text"],
+.note-loom-template-config-modal .setting-item-control input[type="text"] {
+  border-radius: var(--note-loom-control-radius);
+}
+
+.note-loom-template-config-modal .setting-item-control > button,
+.note-loom-template-config-modal .note-loom-semantic-split-controls > button,
+.note-loom-template-config-modal .note-loom-action-setting .setting-item-control > button {
+  border-radius: var(--note-loom-control-radius);
+}
+
+.note-loom-template-field-list {
+  border-top: 0;
+}
+
+.note-loom-template-config-modal .note-loom-template-field-item {
+  display: grid;
+  grid-template-columns:
+    minmax(0, var(--note-loom-card-left-column))
+    var(--note-loom-card-middle-gap)
+    minmax(0, var(--note-loom-card-right-column));
+  position: relative;
+  align-items: center;
+  margin: 0;
+  min-height: 72px;
+  padding: 0;
+  border: 0 !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none !important;
+}
+
+.note-loom-template-config-modal .note-loom-field-config-group {
+  padding: 6px 16px;
+}
+
+.note-loom-template-config-modal .note-loom-template-field-item:last-child {
+  border-bottom: 0;
+}
+
+.note-loom-template-config-modal .note-loom-template-field-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--background-modifier-border) 72%, transparent);
+}
+
+.note-loom-template-config-modal .note-loom-template-field-item:has(+ .note-loom-template-field-options-item)::after {
+  display: none;
+}
+
+.note-loom-template-config-modal .note-loom-template-field-item:hover {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.note-loom-template-config-modal .note-loom-template-field-item .setting-item-info,
+.note-loom-template-config-modal .note-loom-template-field-item .setting-item-control {
+  border: 0 !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
+.note-loom-template-config-modal .note-loom-template-field-item .setting-item-info {
+  grid-column: 1;
+  align-self: center;
+  padding-right: 14px;
+  width: 100%;
+  max-width: var(--note-loom-card-left-column);
+  min-height: 0;
+}
+
+.note-loom-template-config-modal .note-loom-template-field-item .note-loom-info-stack {
+  justify-content: center;
+  gap: 3px;
+  width: 100%;
+}
+
+.note-loom-template-config-modal .note-loom-field-config-note {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  margin: 0;
+  min-height: 56px;
+}
+
+.note-loom-template-config-modal .note-loom-field-config-note .setting-item-info {
+  align-self: center;
+  width: 100%;
+  max-width: none;
+  padding-right: 0;
+}
+
+.note-loom-template-config-modal .note-loom-field-config-note .note-loom-info-stack {
+  display: block;
+  height: auto;
+}
+
+.note-loom-template-config-modal .note-loom-field-config-note .note-loom-info-stack > .setting-item-name {
+  display: block;
+  flex: 0 0 auto;
+  min-height: auto;
+  width: 100%;
+}
+
+.note-loom-template-config-modal .note-loom-field-config-note::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--background-modifier-border) 72%, transparent);
+}
+
+.note-loom-template-config-modal .note-loom-template-field-item .note-loom-info-stack > .setting-item-name,
+.note-loom-template-config-modal .note-loom-template-field-item .note-loom-info-stack > .setting-item-description {
+  display: block;
+  flex: 0 0 auto;
+  min-height: auto;
+}
+
+.note-loom-template-config-modal .note-loom-template-field-item .setting-item-control {
+  grid-column: 3;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  align-self: center;
+  gap: 10px;
+  justify-content: stretch;
+  width: 100%;
+  max-width: var(--note-loom-card-right-column);
+  justify-self: stretch;
+}
+
+.note-loom-template-config-modal .note-loom-template-field-options-item .setting-item-control {
+  grid-column: 3;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  min-height: 24px;
+  gap: 0;
+  max-width: var(--note-loom-card-right-column);
+}
+
+.note-loom-template-config-modal .note-loom-template-field-options-item {
+  min-height: 0;
+  margin-top: -16px;
+  padding-top: 0;
+  padding-bottom: 0;
+  align-items: center;
+  grid-template-rows: auto;
+}
+
+.note-loom-template-config-modal .note-loom-template-field-options-item .setting-item-info {
+  display: none;
+}
+
+.note-loom-template-config-modal .note-loom-field-options-inline-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.note-loom-template-config-modal .note-loom-field-options-chip-prefix {
+  flex: 0 0 auto;
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+
+.note-loom-template-config-modal .note-loom-field-options-chip-list {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  min-width: 0;
+  flex-wrap: nowrap;
+  gap: 6px;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  mask-image: linear-gradient(to right, black calc(100% - 28px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black calc(100% - 28px), transparent 100%);
+}
+
+.note-loom-template-config-modal .note-loom-field-options-chip {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  min-height: 24px;
+  max-width: 180px;
+  padding: 0 8px;
+  border: 1px solid color-mix(in srgb, var(--background-modifier-border) 82%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--background-secondary) 88%, transparent);
+}
+
+.note-loom-template-config-modal .note-loom-field-options-chip-label {
+  min-width: 0;
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--text-normal);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.note-loom-template-config-modal .note-loom-template-field-item .setting-item-control > .checkbox-container,
+.note-loom-template-config-modal .note-loom-template-field-item .setting-item-control > input[type="text"] {
+  align-self: center;
+  margin: 0;
+}
+
+.note-loom-template-config-modal .note-loom-template-field-item input[type="text"] {
+  width: 100%;
+  min-width: 0;
+  min-height: 30px;
+  padding-block: 5px;
+  padding-inline: 10px;
+}
+
+.note-loom-template-config-modal .note-loom-modal-section:not(.note-loom-field-config-group) .setting-item {
+  display: grid;
+  grid-template-columns:
+    minmax(0, var(--note-loom-card-left-column))
+    var(--note-loom-card-middle-gap)
+    minmax(0, var(--note-loom-card-right-column));
+  align-items: stretch;
+  min-height: 68px;
+}
+
+.note-loom-template-config-modal .note-loom-modal-section:not(.note-loom-field-config-group) .setting-item .setting-item-info {
+  grid-column: 1;
+  width: 100%;
+  max-width: var(--note-loom-card-left-column);
+  padding-right: 14px;
+  align-self: center;
+}
+
+.note-loom-template-config-modal .note-loom-modal-section:not(.note-loom-field-config-group) .setting-item .setting-item-control {
+  grid-column: 3;
+  width: 100%;
+  max-width: var(--note-loom-card-right-column);
+  min-width: 0;
+  justify-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.note-loom-template-config-modal .note-loom-modal-section:not(.note-loom-field-config-group) .note-loom-info-stack {
+  justify-content: center;
+  gap: 3px;
+  width: 100%;
+}
+
+.note-loom-template-config-modal .note-loom-modal-section:not(.note-loom-field-config-group) .note-loom-info-stack > .setting-item-name,
+.note-loom-template-config-modal .note-loom-modal-section:not(.note-loom-field-config-group) .note-loom-info-stack > .setting-item-description,
+.note-loom-template-config-modal .note-loom-modal-section:not(.note-loom-field-config-group) .note-loom-info-stack > .note-loom-info-stack-line {
+  display: block;
+  flex: 0 0 auto;
+  width: 100%;
+  min-width: 0;
+}
+
+.note-loom-template-config-modal .note-loom-modal-section:not(.note-loom-field-config-group) .setting-item .setting-item-control > select,
+.note-loom-template-config-modal .note-loom-modal-section:not(.note-loom-field-config-group) .setting-item .setting-item-control > input[type="text"] {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.note-loom-template-config-modal .note-loom-section-inline-action {
+  min-width: 112px;
+}
+
+.note-loom-template-config-modal .note-loom-modal-section:not(.note-loom-field-config-group) .note-loom-action-setting .setting-item-control {
+  justify-content: flex-end;
+}
+
+.note-loom-template-config-modal .note-loom-modal-section:not(.note-loom-field-config-group) .note-loom-action-setting .setting-item-control > button {
+  min-width: 112px;
+}
+
+.note-loom-template-config-modal .note-loom-modal-section:not(.note-loom-field-config-group) .setting-item .setting-item-description {
+  font-size: var(--note-loom-modal-copy-font-size);
+  line-height: var(--note-loom-modal-copy-line-height);
+  font-weight: var(--note-loom-modal-copy-font-weight);
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.note-loom-template-config-modal .note-loom-template-field-item .checkbox-container {
+  margin-right: 2px;
+}
+
+.note-loom-template-config-modal .note-loom-template-field-item .setting-item-name {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.note-loom-template-config-modal .note-loom-template-field-item .setting-item-description {
+  font-size: var(--note-loom-modal-copy-font-size);
+  line-height: var(--note-loom-modal-copy-line-height);
+  font-weight: var(--note-loom-modal-copy-font-weight);
+  color: var(--text-muted);
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.note-loom-semantic-section {
+  margin-inline: var(--note-loom-settings-inset);
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.note-loom-semantic-section {
+  margin-bottom: 10px;
+}
+
+.note-loom-template-config-modal .note-loom-semantic-section-note {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  margin-inline: 0;
+  margin-top: 0;
+  margin-bottom: 8px;
+  padding-left: 0;
+  padding-right: 0;
+  font-size: var(--note-loom-modal-copy-font-size);
+  line-height: var(--note-loom-modal-copy-line-height);
+  font-weight: var(--note-loom-modal-copy-font-weight);
+  color: var(--text-muted);
+}
+
+.note-loom-template-config-modal .note-loom-semantic-section > .note-loom-semantic-section-note:first-child {
+  padding-top: 10px;
+}
+
+.note-loom-template-config-modal .note-loom-semantic-split-row {
+  display: grid;
+  grid-template-columns:
+    minmax(0, var(--note-loom-card-left-column))
+    var(--note-loom-card-middle-gap)
+    minmax(0, var(--note-loom-card-right-column));
+  align-items: stretch;
+  row-gap: 8px;
+}
+
+.note-loom-template-config-modal .note-loom-semantic-split-row-center {
+  align-items: center;
+}
+
+.note-loom-template-config-modal .note-loom-semantic-split-info {
+  grid-column: 1;
+  align-self: stretch;
+  min-width: 0;
+  width: 100%;
+  max-width: var(--note-loom-card-left-column);
+}
+
+.note-loom-template-config-modal .note-loom-semantic-split-title {
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: var(--text-normal);
+}
+
+.note-loom-template-config-modal .note-loom-semantic-split-description {
+  margin-top: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: var(--text-muted);
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.note-loom-template-config-modal .note-loom-semantic-split-controls {
+  grid-column: 3;
+  width: 100%;
+  max-width: var(--note-loom-card-right-column);
+  justify-self: stretch;
+}
+
+.note-loom-template-config-modal .note-loom-semantic-split-controls input[type="text"],
+.note-loom-template-config-modal .note-loom-semantic-split-controls select {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.note-loom-template-config-modal .note-loom-semantic-controls-meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  width: 100%;
+}
+
+.note-loom-template-config-modal .note-loom-semantic-labeled-control {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.note-loom-template-config-modal .note-loom-semantic-labeled-control-title {
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--text-muted);
+  white-space: normal;
+  overflow-wrap: anywhere;
+  font-weight: 400;
+}
+
+.note-loom-template-config-modal .note-loom-semantic-enum-inputs .text-input,
+.note-loom-template-config-modal .note-loom-semantic-enum-inputs input[type="text"],
+.note-loom-template-config-modal .note-loom-semantic-labeled-control input[type="text"] {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.note-loom-template-config-modal .note-loom-semantic-enum-list {
+  display: grid;
+}
+
+.note-loom-template-config-modal .note-loom-semantic-enum-item {
+  position: relative;
+  padding: 14px 0;
+}
+
+.note-loom-template-config-modal .note-loom-semantic-enum-option-grid {
+  display: grid;
+  grid-template-columns:
+    minmax(0, var(--note-loom-card-left-column))
+    var(--note-loom-card-middle-gap)
+    minmax(0, var(--note-loom-card-right-column));
+  row-gap: 10px;
+  align-items: start;
+}
+
+.note-loom-template-config-modal .note-loom-semantic-enum-option-summary-block {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  align-self: center;
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  padding-right: 14px;
+}
+
+.note-loom-template-config-modal .note-loom-semantic-enum-column-titles,
+.note-loom-template-config-modal .note-loom-semantic-enum-inputs {
+  grid-column: 3;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+  max-width: var(--note-loom-card-right-column);
+  justify-self: stretch;
+}
+
+.note-loom-template-config-modal .note-loom-semantic-enum-column-titles {
+  grid-row: 1;
+}
+
+.note-loom-template-config-modal .note-loom-semantic-enum-inputs {
+  grid-row: 2;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.note-loom-template-config-modal .note-loom-semantic-enum-column-titles > *,
+.note-loom-template-config-modal .note-loom-semantic-enum-inputs > * {
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+.note-loom-template-config-modal .note-loom-semantic-enum-title {
+  grid-column: 1;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: var(--text-normal);
+}
+
+.note-loom-structural-rule-modal .note-loom-semantic-enum-option-heading {
+  font-size: 18px !important;
+  line-height: 1.35 !important;
+  font-weight: 450 !important;
+}
+
+.note-loom-template-config-modal .note-loom-semantic-enum-description {
+  grid-column: 1;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: var(--text-muted);
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-enum-option-summary {
+  margin-top: 2px;
+}
+
+.note-loom-template-config-modal .note-loom-semantic-section .note-loom-section-note {
+  font-size: var(--note-loom-modal-copy-font-size);
+  line-height: var(--note-loom-modal-copy-line-height);
+  font-weight: var(--note-loom-modal-copy-font-weight);
+  color: var(--text-muted);
+}
+
+.note-loom-template-config-modal .note-loom-semantic-section .note-loom-semantic-empty-note {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+}
+
+.note-loom-template-config-modal .note-loom-semantic-enum-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--background-modifier-border) 72%, transparent);
+}
+
+.note-loom-template-config-modal .setting-item-name {
+  font-weight: 400 !important;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.note-loom-template-config-modal .note-loom-modal-section .setting-item-name,
+.note-loom-template-config-modal .note-loom-template-field-item .setting-item-name,
+.note-loom-template-config-modal .note-loom-action-setting .setting-item-name,
+.note-loom-template-config-modal .note-loom-compact-setting .setting-item-name,
+.note-loom-template-config-modal .note-loom-path-setting .setting-item-name {
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+  font-weight: 400 !important;
+}
+
+.note-loom-template-config-modal .note-loom-modal-heading,
+.note-loom-generate-modal .note-loom-modal-heading {
+  margin-top: 14px;
+}
+
+.note-loom-template-config-modal .note-loom-modal-title,
+.note-loom-template-config-modal .note-loom-modal-heading,
+.note-loom-template-config-modal .note-loom-semantic-heading,
+.note-loom-generate-modal .note-loom-modal-heading {
+  font-size: 15px;
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--text-normal);
+}
+
+.note-loom-structural-rule-list {
+  position: relative;
+  display: grid;
+  gap: 0;
+  padding-top: 8px;
+}
+
+.note-loom-structural-rule-list.is-compact {
+  gap: 0;
+}
+
+.note-loom-template-config-modal .note-loom-semantic-section .note-loom-structural-rule-list::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  border-top: 1px solid color-mix(in srgb, var(--background-modifier-border) 72%, transparent);
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-summary-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  column-gap: 12px;
+  margin-bottom: 8px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-summary-text {
+  padding: 0;
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-summary-row > button {
+  align-self: center;
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-collapsible-group {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-collapsible-group {
+  overflow: hidden;
+}
+
+.note-loom-section-behavior-modal .note-loom-section-behavior-rule-list {
+  position: relative;
+  padding-top: 0;
+}
+
+.note-loom-section-behavior-modal .note-loom-section-behavior-item-section {
+  overflow: hidden;
+}
+
+.note-loom-section-behavior-modal
+  .note-loom-section-behavior-rule-list
+  > .setting-item:last-child::after {
+  display: none;
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-group-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 12px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-group-title {
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-row {
+  position: relative;
+  display: grid;
+  grid-template-columns:
+    minmax(0, var(--note-loom-card-left-column))
+    var(--note-loom-card-middle-gap)
+    minmax(0, var(--note-loom-card-right-column));
+  align-items: center;
+  padding: 14px 0;
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-row:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--background-modifier-border) 72%, transparent);
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-row.is-compact {
+  min-height: 0;
+  padding: 12px 0;
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-row.is-recently-updated {
+  animation: note-loom-structural-rule-flash 1.8s ease;
+}
+
+@keyframes note-loom-structural-rule-flash {
+  0% {
+    border-color: color-mix(in srgb, var(--interactive-accent) 55%, var(--note-loom-panel-border));
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--interactive-accent) 18%, transparent),
+      0 10px 28px rgba(0, 0, 0, 0.08);
+  }
+
+  100% {
+    box-shadow: var(--note-loom-panel-shadow);
+  }
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-info {
+  grid-column: 1;
+  max-width: var(--note-loom-card-left-column);
+  min-width: 0;
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-title {
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: var(--text-normal);
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-summary,
+.note-loom-template-config-modal .note-loom-structural-rule-meta {
+  margin-top: 3px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-actions {
+  grid-column: 3;
+  width: 100%;
+  max-width: var(--note-loom-card-right-column);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 8px;
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-row.is-compact .note-loom-structural-rule-actions {
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-actions > button {
+  min-width: 112px;
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-row.is-compact .note-loom-structural-rule-actions > button {
+  min-width: 84px;
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-row.is-compact .note-loom-structural-rule-title {
+  font-size: 13px;
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-row.is-compact .note-loom-structural-rule-summary {
+  margin-top: 2px;
+  font-size: 12px;
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 26px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--background-modifier-border) 84%, transparent);
+  background: color-mix(in srgb, var(--background-secondary) 88%, transparent);
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-status-badge.is-complete {
+  border-color: color-mix(in srgb, var(--color-green) 28%, var(--background-modifier-border));
+  background: color-mix(in srgb, var(--color-green) 10%, var(--background-secondary));
+  color: color-mix(in srgb, var(--color-green) 72%, var(--text-normal));
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-status-badge.is-partial {
+  border-color: color-mix(in srgb, var(--color-orange) 28%, var(--background-modifier-border));
+  background: color-mix(in srgb, var(--color-orange) 10%, var(--background-secondary));
+  color: color-mix(in srgb, var(--color-orange) 80%, var(--text-normal));
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-status-badge.is-unconfigured {
+  border-color: color-mix(in srgb, var(--color-red) 18%, var(--background-modifier-border));
+  background: color-mix(in srgb, var(--color-red) 6%, var(--background-secondary));
+  color: color-mix(in srgb, var(--color-red) 76%, var(--text-normal));
+}
+
+.note-loom-structural-rule-modal .note-loom-modal-section {
+  margin-bottom: 10px;
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-modal-summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 12px;
+  min-height: 32px;
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-modal-summary-topic {
+  min-width: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-modal-summary-label {
+  color: var(--text-muted);
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-modal-summary-value {
+  color: var(--text-normal);
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-modal-summary-value.is-placeholder {
+  color: var(--text-faint);
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-section-intro {
+  position: relative;
+  padding: 0 0 10px;
+  margin-bottom: 2px;
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-section-intro::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--background-modifier-border) 72%, transparent);
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-section-title {
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: var(--text-normal);
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-section-desc,
+.note-loom-structural-rule-modal .note-loom-structural-rule-helper-copy {
+  margin-top: 2px;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-section-note {
+  margin: 0;
+  padding: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-enum-toggle-card {
+  align-items: start;
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-enum-toggle-card .note-loom-semantic-split-info {
+  gap: 0;
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-enum-toggle-summary {
+  margin-top: 6px;
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-enum-toggle-control {
+  align-self: center;
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-target-picker {
+  display: grid;
+  gap: 0;
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-alias-editor {
+  display: grid;
+  gap: 0;
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 0 10px;
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 28px;
+  max-width: 100%;
+  padding: 0 10px;
+  border: 1px solid color-mix(in srgb, var(--background-modifier-border) 82%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--background-secondary) 88%, transparent);
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-chip-label {
+  min-width: 0;
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--text-normal);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-chip-remove {
+  min-width: 20px !important;
+  min-height: 20px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--text-muted);
+  font-size: 14px !important;
+  line-height: 1 !important;
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-add-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-add-input {
+  width: 100%;
+  min-width: 0;
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-target-list {
+  display: grid;
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-target-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 12px;
+  padding: 10px 0;
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-target-row:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--background-modifier-border) 72%, transparent);
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-target-info {
+  min-width: 0;
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-target-name {
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: var(--text-normal);
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-target-meta {
+  margin-top: 2px;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.note-loom-structural-rule-modal .note-loom-structural-rule-target-control {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.note-loom-structural-rule-modal .note-loom-semantic-split-row {
+  position: relative;
+  padding: 12px 0;
+}
+
+.note-loom-structural-rule-modal .note-loom-semantic-split-row:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--background-modifier-border) 72%, transparent);
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-enum-section {
+  padding-top: 2px;
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-enum-note-action-row {
+  display: grid;
+  grid-template-columns:
+    minmax(0, var(--note-loom-card-left-column))
+    var(--note-loom-card-middle-gap)
+    minmax(0, var(--note-loom-card-right-column));
+  align-items: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-enum-action {
+  grid-column: 3;
+  display: flex;
+  justify-content: flex-end;
+  justify-self: stretch;
+}
+
+.note-loom-template-config-modal .note-loom-structural-rule-inline-note {
+  grid-column: 1;
+  padding: 8px 0 0;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.note-loom-template-config-modal .note-loom-modal-footer > button {
+  border-radius: var(--note-loom-control-radius) !important;
+  border: 1px solid var(--note-loom-control-border) !important;
+  box-shadow: none !important;
+}
+
+.note-loom-template-config-modal .note-loom-modal-footer > button.mod-cta {
+  border-radius: var(--note-loom-control-radius) !important;
+}
+
+.note-loom-generate-actions .setting-item-control {
+  gap: 8px;
+}
+
+.note-loom-generate-actions .setting-item-description {
+  margin-top: 1px;
+}
+
+.note-loom-generate-modal .note-loom-card-row:not(.note-loom-field-row) {
+  display: grid;
+  grid-template-columns:
+    minmax(0, var(--note-loom-card-left-column))
+    var(--note-loom-card-middle-gap)
+    minmax(0, var(--note-loom-card-right-column));
+  align-items: stretch;
+}
+
+.note-loom-generate-modal .note-loom-card-row:not(.note-loom-field-row) .note-loom-card-info {
+  grid-column: 1;
+  width: 100%;
+  max-width: var(--note-loom-card-left-column);
+  text-align: left;
+  align-self: center;
+}
+
+.note-loom-generate-modal .note-loom-card-row:not(.note-loom-field-row):has(.clickable-icon) {
+  align-items: start;
+  min-height: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.note-loom-generate-modal .note-loom-card-row:not(.note-loom-field-row):has(.clickable-icon) .note-loom-card-info {
+  align-self: start;
+}
+
+.note-loom-generate-modal .note-loom-card-row:not(.note-loom-field-row):has(.clickable-icon) .note-loom-info-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 4px;
+  height: auto;
+}
+
+.note-loom-generate-modal .note-loom-card-row:not(.note-loom-field-row):has(.clickable-icon) .note-loom-info-stack > .setting-item-name,
+.note-loom-generate-modal .note-loom-card-row:not(.note-loom-field-row):has(.clickable-icon) .note-loom-info-stack > .setting-item-description {
+  flex: 0 0 auto;
+  min-height: auto;
+  margin: 0;
+}
+
+.note-loom-generate-modal .note-loom-card-row.note-loom-card-row-single-left:not(.note-loom-field-row) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.note-loom-generate-modal .note-loom-card-row.note-loom-card-row-single-left:not(.note-loom-field-row) .note-loom-card-info {
+  max-width: none;
+  width: 100%;
+  align-self: stretch;
+  padding-right: 0;
+}
+
+.note-loom-generate-modal .note-loom-card-row.note-loom-card-row-single-right:not(.note-loom-field-row) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.note-loom-generate-modal .note-loom-card-row.note-loom-card-row-single-right:not(.note-loom-field-row) .note-loom-card-control {
+  max-width: none;
+  width: 100%;
+  justify-self: stretch;
+}
+
+.note-loom-generate-modal .note-loom-generate-source-note .note-loom-info-stack {
+  justify-content: flex-start;
+  gap: 4px;
+  height: auto;
+}
+
+.note-loom-generate-modal .note-loom-generate-source-note .note-loom-info-stack > .setting-item-name,
+.note-loom-generate-modal .note-loom-generate-source-note .note-loom-info-stack > .setting-item-description {
+  flex: 0 0 auto;
+}
+
+.note-loom-generate-modal .note-loom-card-row:not(.note-loom-field-row) .note-loom-card-control {
+  grid-column: 3;
+  width: 100%;
+  max-width: var(--note-loom-card-right-column);
+  min-width: 0;
+  justify-content: flex-end;
+  align-items: center;
+  align-self: center;
+  justify-self: stretch;
+}
+
+.note-loom-generate-modal .note-loom-card-row:not(.note-loom-field-row):has(.clickable-icon) .note-loom-card-control {
+  align-self: start;
+  align-items: flex-start;
+  padding-top: 2px;
+}
+
+.note-loom-generate-modal .note-loom-path-setting {
+  display: grid;
+}
+
+.note-loom-generate-modal .note-loom-path-setting .setting-item-info {
+  margin-bottom: 0;
+  padding-right: 16px;
+}
+
+.note-loom-generate-modal .note-loom-path-setting .setting-item-control {
+  width: 100%;
+  max-width: 420px;
+}
+
+.note-loom-generate-modal .note-loom-generate-inline-control .setting-item-control,
+.note-loom-generate-modal .note-loom-generate-inline-control.note-loom-path-setting .setting-item-control {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  width: 100%;
+  max-width: 420px;
+}
+
+.note-loom-generate-modal .note-loom-generate-inline-control .setting-item-control > select,
+.note-loom-generate-modal .note-loom-generate-inline-control .setting-item-control > input[type="text"] {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: 100%;
+  max-width: calc(100% - 94px);
+}
+
+.note-loom-generate-modal .note-loom-generate-inline-control .setting-item-control:has(> input[type="text"]:only-child) > input[type="text"],
+.note-loom-generate-modal .note-loom-generate-inline-control .setting-item-control:has(> select:only-child) > select {
+  width: 100%;
+  max-width: 100%;
+}
+
+.note-loom-generate-modal .note-loom-generate-inline-control .setting-item-control > button {
+  flex: 0 0 auto;
+  min-width: 84px !important;
+  align-self: center;
+}
+
+.note-loom-generate-modal .setting-item-control > select,
+.note-loom-generate-modal .setting-item-control > input[type="text"] {
+  width: 100%;
+}
+
+.note-loom-generate-modal .setting-item-control > button,
+.note-loom-generate-modal .note-loom-field-action {
+  min-width: 68px !important;
+  padding-inline: 14px !important;
+  font-size: var(--note-loom-control-font-size) !important;
+  border-radius: var(--note-loom-control-radius) !important;
+}
+
+.note-loom-generate-modal .note-loom-runtime-flag-row {
+  position: relative;
+  margin: 0;
+  padding: var(--note-loom-generate-content-gap-lg) 0;
+  font-size: var(--note-loom-generate-copy-font-size);
+  line-height: var(--note-loom-generate-copy-line-height);
+  font-weight: var(--note-loom-generate-copy-font-weight);
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.note-loom-generate-modal .note-loom-section-soft-note {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.note-loom-generate-modal .note-loom-section-soft-note strong {
+  color: var(--text-normal);
+}
+
+.note-loom-generate-modal .note-loom-section-soft-note-more {
+  color: var(--text-faint);
+}
+
+.note-loom-generate-modal .note-loom-runtime-flag-row::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-bottom: 1px solid var(--note-loom-generate-divider-color);
+}
+
+.note-loom-generate-modal .note-loom-generate-summary-count,
+.note-loom-generate-modal .note-loom-integrity-summary-row .setting-item-name.note-loom-note-row-text,
+.note-loom-generate-modal .note-loom-integrity-note-row .setting-item-name.note-loom-note-row-text {
+  margin: 0;
+  padding: 0;
+}
+
+.note-loom-generate-modal .note-loom-generate-pending-summary {
+  margin-top: var(--note-loom-generate-content-gap-md);
+}
+
+.note-loom-generate-modal .note-loom-generate-pending-summary .setting-item-control {
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.note-loom-generate-modal .note-loom-generate-summary-count {
+  text-align: var(--note-loom-generate-summary-count-align);
+  white-space: var(--note-loom-generate-summary-count-white-space);
+}
+
+.note-loom-generate-modal .note-loom-integrity-summary-row,
+.note-loom-generate-modal .note-loom-integrity-note-row,
+.note-loom-generate-modal .note-loom-generate-footer-warning {
+  margin: 0;
+}
+
+.note-loom-generate-modal .note-loom-integrity-summary-row {
+  position: relative;
+  padding-bottom: 14px;
+  margin-bottom: var(--note-loom-generate-content-gap-sm);
+}
+
+.note-loom-generate-modal .note-loom-integrity-summary-row::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-bottom: 1px solid var(--note-loom-generate-divider-color);
+}
+
+.note-loom-generate-modal .note-loom-integrity-summary-row .setting-item,
+.note-loom-generate-modal .note-loom-integrity-note-row .setting-item,
+.note-loom-generate-modal .note-loom-integrity-summary-row .setting-item-info,
+.note-loom-generate-modal .note-loom-integrity-note-row .setting-item-info {
+  min-height: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.note-loom-generate-modal .note-loom-generate-footer-warning {
+  color: var(--text-warning);
+  align-self: center;
+  flex: 1 1 auto;
+  margin-right: auto;
+  line-height: 1.35;
+}
+
+.note-loom-generate-modal .note-loom-integrity-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--note-loom-generate-content-gap-lg);
+  padding-top: var(--note-loom-generate-content-gap-lg);
+  padding-bottom: var(--note-loom-generate-content-gap-lg);
+  margin-top: var(--note-loom-generate-content-gap-sm);
+  position: relative;
+}
+
+.note-loom-generate-modal .note-loom-integrity-actions::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  border-top: 1px solid var(--note-loom-generate-divider-color);
+}
+
+.note-loom-generate-modal .note-loom-integrity-actions > button {
+  flex: 0 0 auto;
+}
+
+.note-loom-generate-modal .note-loom-integrity-action-row {
+  margin: 0;
+}
+
+.note-loom-generate-modal .note-loom-integrity-action-row .setting-item-info,
+.note-loom-generate-modal .note-loom-integrity-action-row .setting-item-name.note-loom-note-row-text {
+  width: 100%;
+}
+
+.note-loom-generate-modal .note-loom-learning-detail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: var(--note-loom-generate-content-gap-md);
+}
+
+.note-loom-generate-modal .note-loom-learning-detail-item {
+  display: grid;
+  grid-template-columns: var(--note-loom-generate-learning-detail-columns);
+  column-gap: var(--note-loom-generate-content-gap-lg);
+  row-gap: var(--note-loom-generate-learning-detail-row-gap);
+  align-items: start;
+  font-size: var(--note-loom-generate-copy-font-size);
+  line-height: var(--note-loom-generate-copy-line-height);
+  font-weight: var(--note-loom-generate-copy-font-weight);
+}
+
+.note-loom-generate-modal .note-loom-learning-detail-item > :first-child {
+  color: var(--text-normal);
+}
+
+.note-loom-generate-modal .note-loom-learning-detail-item > :last-child {
+  color: var(--text-muted);
+}
+
+.note-loom-generate-modal .note-loom-run-diff-header {
+  display: grid;
+  grid-template-columns: minmax(0, var(--note-loom-card-left-column)) minmax(
+      0,
+      var(--note-loom-card-right-column)
+    );
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 20px;
+}
+
+.note-loom-generate-modal .note-loom-run-diff-header > .note-loom-section-note {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.note-loom-generate-modal .note-loom-run-diff-header + .note-loom-section-note {
+  margin: 0;
+  padding: 0;
+}
+
+.note-loom-generate-modal .note-loom-section-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.note-loom-generate-modal .note-loom-section-toolbar > button {
+  flex: 0 0 auto;
+  min-width: var(--note-loom-generate-action-min-width);
+}
+
+.note-loom-generate-modal .note-loom-run-diff-header > button {
+  justify-self: end;
+  flex: 0 0 auto;
+  min-width: var(--note-loom-generate-action-min-width);
+}
+
+.note-loom-generate-modal .note-loom-run-diff-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: var(--note-loom-generate-content-gap-md);
+}
+
+.note-loom-generate-modal .note-loom-generate-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.note-loom-generate-modal .note-loom-run-diff-row {
+  display: grid;
+  grid-template-columns: var(--note-loom-generate-run-diff-row-columns);
+  column-gap: 0;
+  row-gap: var(--note-loom-generate-run-diff-row-gap);
+  align-items: var(--note-loom-generate-run-diff-row-align-items);
+  font-size: var(--note-loom-generate-copy-font-size);
+  line-height: var(--note-loom-generate-copy-line-height);
+  font-weight: var(--note-loom-generate-copy-font-weight);
+  position: relative;
+  padding: var(--note-loom-generate-run-diff-row-padding);
+}
+
+.note-loom-generate-modal .note-loom-run-diff-field {
+  color: var(--text-normal);
+  min-width: 0;
+  min-height: var(--note-loom-generate-run-diff-cell-min-height);
+  padding-right: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.note-loom-generate-modal .note-loom-run-diff-row:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: var(--note-loom-generate-inline-padding);
+  right: var(--note-loom-generate-inline-padding);
+  bottom: 0;
+  border-bottom: 1px solid var(--note-loom-generate-divider-color);
+}
+
+.note-loom-generate-modal .note-loom-run-diff-action-cell {
+  min-width: 0;
+  min-height: var(--note-loom-generate-run-diff-cell-min-height);
+  display: flex;
+  align-items: center;
+  justify-content: var(--note-loom-generate-run-diff-cell-justify);
+  padding-inline: var(--note-loom-generate-run-diff-cell-padding-inline);
+}
+
+.note-loom-generate-modal .note-loom-run-diff-action {
+  width: 100%;
+  min-width: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  padding: 8px 12px;
+  border-radius: var(--note-loom-control-radius);
+  border: 1px solid var(--note-loom-control-border);
+  background: color-mix(in srgb, var(--background-primary) 96%, transparent);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--background-modifier-border) 34%, transparent);
+  font-size: var(--note-loom-control-font-size);
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+.note-loom-generate-modal .note-loom-run-diff-action-manual {
+  color: var(--text-accent);
+}
+
+.note-loom-generate-modal .note-loom-run-diff-action-semantic {
+  color: var(--text-warning);
+}
+
+.note-loom-generate-modal .note-loom-run-diff-action-matched {
+  color: var(--text-success);
+}
+
+.note-loom-generate-modal .note-loom-run-diff-action-unmatched {
+  color: var(--text-error);
+}
+
+.note-loom-generate-modal .note-loom-run-diff-value-cell {
+  min-width: 0;
+  min-height: var(--note-loom-generate-run-diff-cell-min-height);
+  display: flex;
+  align-items: center;
+  padding-block: 12px;
+}
+
+.note-loom-generate-modal .note-loom-run-diff-value {
+  width: 100%;
+  max-height: 96px;
+  overflow-y: auto;
+  color: var(--text-muted);
+  word-break: break-word;
+}
+
+.note-loom-generate-modal .note-loom-run-diff-targets {
+  margin-top: 4px;
+}
+
+.note-loom-generate-modal .note-loom-pending-state-card {
+  display: grid;
+  grid-template-columns: var(--note-loom-generate-pending-state-columns);
+  column-gap: 12px;
+  row-gap: var(--note-loom-generate-pending-state-row-gap);
+  align-items: center;
+  padding: 10px 0;
+  position: relative;
+}
+
+.note-loom-generate-modal .note-loom-pending-state-card.is-action-needed {
+  padding-bottom: 14px;
+  margin-bottom: 6px;
+}
+
+.note-loom-generate-modal .note-loom-pending-state-card.is-ready {
+  padding-block: 8px 2px;
+}
+
+.note-loom-generate-modal .note-loom-pending-state-card.has-divider::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-bottom: 1px solid var(--note-loom-generate-divider-color);
+}
+
+.note-loom-generate-modal .note-loom-pending-state-info {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.note-loom-generate-modal .note-loom-pending-state-info > .note-loom-section-note {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.note-loom-generate-modal .note-loom-pending-state-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: var(--note-loom-generate-pending-state-actions-justify);
+  gap: 8px;
+}
+
+.note-loom-generate-modal .note-loom-run-diff-header > button,
+.note-loom-generate-modal .note-loom-pending-state-actions > button {
+  border-radius: var(--note-loom-control-radius);
+  border: 1px solid var(--note-loom-control-border);
+  box-shadow: none;
+  min-width: var(--note-loom-generate-action-min-width);
+}
+
+.note-loom-generate-modal .note-loom-integrity-row {
+  display: grid;
+  grid-template-columns: var(--note-loom-generate-integrity-row-columns);
+  align-items: center;
+  column-gap: var(--note-loom-generate-content-gap-lg);
+  padding: var(--note-loom-generate-content-gap-lg) 0;
+  position: relative;
+  row-gap: var(--note-loom-generate-integrity-row-gap);
+}
+
+.note-loom-generate-modal .note-loom-integrity-row + .note-loom-integrity-row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  border-top: 1px solid var(--note-loom-generate-divider-color);
+}
+
+.note-loom-generate-modal .note-loom-integrity-row-info {
+  min-width: 0;
+}
+
+.note-loom-generate-modal .note-loom-integrity-row-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.note-loom-generate-modal .note-loom-integrity-row-label {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.note-loom-generate-modal .note-loom-integrity-row-required {
+  color: var(--text-muted);
+  font-size: var(--note-loom-generate-copy-font-size);
+  line-height: var(--note-loom-generate-copy-line-height);
+  font-weight: var(--note-loom-generate-copy-font-weight);
+}
+
+.note-loom-generate-modal .note-loom-integrity-row-meta,
+.note-loom-generate-modal .note-loom-integrity-row-value,
+.note-loom-generate-modal .note-loom-integrity-row-warning {
+  margin-top: var(--note-loom-generate-content-gap-sm);
+  font-size: var(--note-loom-generate-copy-font-size);
+  line-height: var(--note-loom-generate-copy-line-height);
+  font-weight: var(--note-loom-generate-copy-font-weight);
+}
+
+.note-loom-generate-modal .note-loom-integrity-row-warning {
+  color: var(--text-warning);
+}
+
+.note-loom-generate-modal .note-loom-integrity-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 64px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  line-height: 1.2;
+  white-space: nowrap;
+  border: 1px solid var(--background-modifier-border);
+  background: color-mix(in srgb, var(--background-secondary) 92%, transparent);
+}
+
+.note-loom-generate-modal .note-loom-field-row {
+  --note-loom-field-row-columns: minmax(140px, 180px) minmax(0, 1fr);
+  --note-loom-field-row-control-columns: minmax(0, 1fr) 96px;
+  --note-loom-field-row-control-gap: 6px 4px;
+  --note-loom-field-row-control-align-items: center;
+  --note-loom-field-row-control-align-content: center;
+  align-items: stretch;
+  padding: 0;
+  margin-bottom: 0;
+  border-radius: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.note-loom-generate-modal .note-loom-field-row + .note-loom-field-row {
+  border-top: 1px solid color-mix(in srgb, var(--background-modifier-border) 70%, transparent);
+}
+
+.note-loom-generate-modal .note-loom-field-row:hover {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.note-loom-generate-modal .note-loom-field-row .setting-item-info {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(
+    var(--note-loom-generate-field-row-height) +
+      (var(--note-loom-generate-field-row-block-padding) * 2)
+  );
+  padding-block: var(--note-loom-generate-field-row-block-padding);
+  padding-right: 18px;
+  box-sizing: border-box;
+}
+
+.note-loom-generate-modal .note-loom-field-row .setting-item-control {
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas:
+    "textarea toggle"
+    "textarea apply"
+    "textarea secondary";
+  min-height: calc(
+    var(--note-loom-generate-field-row-height) +
+      (var(--note-loom-generate-field-row-block-padding) * 2)
+  );
+  padding-block: var(--note-loom-generate-field-row-block-padding);
+  box-sizing: border-box;
+}
+
+.note-loom-generate-modal .note-loom-field-row .setting-item-control > .checkbox-container {
+  grid-area: toggle;
+  justify-self: end;
+  align-self: center;
+}
+
+.note-loom-generate-modal .note-loom-field-row .setting-item-control > textarea {
+  grid-area: textarea;
+  height: var(--note-loom-generate-field-row-height);
+  min-height: var(--note-loom-generate-field-row-height);
+  max-height: var(--note-loom-generate-field-row-height);
+  min-width: 0;
+  overflow-y: auto;
+  resize: none;
+}
+
+.note-loom-generate-modal .note-loom-field-row .setting-item-control > textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.note-loom-generate-modal .note-loom-field-row .setting-item-control > .note-loom-field-apply-action {
+  grid-area: apply;
+  justify-self: end;
+  align-self: center;
+}
+
+.note-loom-generate-modal .note-loom-field-row .setting-item-control > .note-loom-field-secondary-action {
+  grid-area: secondary;
+  justify-self: end;
+  align-self: center;
+}
+
+.note-loom-generate-modal .note-loom-field-action.is-hidden {
+  display: none !important;
+}
+
+.note-loom-generate-modal .note-loom-field-row.note-loom-field-row-layout-toggle-primary .setting-item-control {
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "textarea toggle"
+    "textarea apply";
+}
+
+.note-loom-generate-modal .note-loom-field-row.note-loom-field-row-layout-actions .setting-item-control {
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "textarea apply"
+    "textarea secondary";
+}
+
+.note-loom-generate-modal .note-loom-field-row.note-loom-field-row-layout-primary .setting-item-control {
+  grid-template-rows: 1fr;
+  grid-template-areas: "textarea apply";
+}
+
+.note-loom-preview {
+  display: block;
+  width: var(--note-loom-preview-width, 100%);
+  max-width: 100%;
+  margin: 0;
+  min-height: var(--note-loom-preview-min-height, 0);
+  padding: var(--note-loom-preview-padding, 0);
+  border: 0;
+  border-radius: var(--note-loom-preview-border-radius, 0);
+  background: var(--note-loom-preview-background, transparent);
+  font-family: var(--font-monospace);
+  white-space: pre-wrap;
+  overflow-x: var(--note-loom-preview-overflow-x, auto);
+  overflow-y: var(--note-loom-preview-overflow-y, visible);
+  resize: var(--note-loom-preview-resize, none);
+  box-sizing: border-box;
+  word-break: break-word;
+}
+
+.note-loom-generate-modal .note-loom-field-row textarea {
+  min-height: 108px;
+  padding-top: 10px;
+  padding-bottom: 8px;
+  resize: none;
+}
+
+.note-loom-settings .setting-item-name,
+.note-loom-modal .setting-item-name {
+  line-height: 1.3;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.note-loom-settings .setting-item-name {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.note-loom-settings .setting-item-description,
+.note-loom-modal .setting-item-description {
+  line-height: var(--note-loom-modal-copy-line-height);
+  font-size: var(--note-loom-modal-copy-font-size);
+  font-weight: var(--note-loom-modal-copy-font-weight);
+}
+
+.note-loom-settings .setting-item-description,
+.note-loom-template-badge {
+  font-size: 13px;
+}
+
+.note-loom-settings .setting-item-description {
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.note-loom-field-row {
+  display: grid;
+  grid-template-columns: var(
+    --note-loom-field-row-columns,
+    minmax(120px, 180px) minmax(0, 1fr)
+  );
+  gap: var(--note-loom-field-row-gap, 10px 16px);
+}
+
+.note-loom-field-row .setting-item-info {
+  min-width: 0;
+}
+
+.note-loom-field-row .setting-item-control {
+  display: grid;
+  grid-template-columns: var(
+    --note-loom-field-row-control-columns,
+    auto minmax(0, 1fr) auto auto
+  );
+  align-items: var(--note-loom-field-row-control-align-items, start);
+  align-content: var(--note-loom-field-row-control-align-content, normal);
+  gap: var(--note-loom-field-row-control-gap, 8px);
+  width: 100%;
+}
+
+.note-loom-field-row textarea {
+  width: 100%;
+  min-width: 0;
+  resize: vertical;
+}
+
+.note-loom-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 18px;
+  margin-bottom: 2px;
+}
+
+.note-loom-generate-modal .note-loom-modal-section {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.note-loom-generate-modal .note-loom-modal-section > .note-loom-section-note {
+  padding-inline: 0;
+}
+
+@media (max-width: 900px) {
+  .note-loom-toolbar-item .setting-item-control {
+    flex-wrap: wrap;
+  }
+
+  .note-loom-path-setting .setting-item-control {
+    width: 100%;
+  }
+
+  .note-loom-field-row {
+    --note-loom-field-row-columns: 1fr;
+  }
+
+  .note-loom-field-row .setting-item-control {
+    --note-loom-field-row-control-columns: auto minmax(0, 1fr);
+  }
+
+  .note-loom-template-config-modal .note-loom-template-field-item .setting-item-control {
+    width: 100%;
+  }
+
+  .note-loom-generate-modal .note-loom-card-row:not(.note-loom-field-row) .note-loom-card-info,
+  .note-loom-generate-modal .note-loom-card-row:not(.note-loom-field-row) .note-loom-card-control,
+  .note-loom-generate-modal .note-loom-path-setting .setting-item-control {
+    flex-basis: 100%;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .note-loom-generate-modal .note-loom-generate-inline-control .setting-item-control,
+  .note-loom-generate-modal .note-loom-generate-inline-control.note-loom-path-setting .setting-item-control {
+    max-width: 100%;
+  }
+
+  .note-loom-generate-modal .note-loom-card-row:not(.note-loom-field-row) {
+    display: block;
+  }
+}
+
+@media (max-width: 680px) {
+  .note-loom-generate-modal {
+    --note-loom-generate-summary-count-align: left;
+    --note-loom-generate-summary-count-white-space: normal;
+    --note-loom-generate-learning-detail-columns: 1fr;
+    --note-loom-generate-learning-detail-row-gap: 2px;
+    --note-loom-generate-run-diff-row-columns: 1fr;
+    --note-loom-generate-run-diff-row-gap: 4px;
+    --note-loom-generate-run-diff-row-align-items: start;
+    --note-loom-generate-run-diff-row-padding: 12px 16px;
+    --note-loom-generate-run-diff-cell-min-height: 0;
+    --note-loom-generate-run-diff-cell-padding-inline: 0;
+    --note-loom-generate-run-diff-cell-justify: flex-start;
+    --note-loom-generate-pending-state-columns: 1fr;
+    --note-loom-generate-pending-state-row-gap: 10px;
+    --note-loom-generate-pending-state-actions-justify: flex-start;
+    --note-loom-generate-integrity-row-columns: 1fr;
+    --note-loom-generate-integrity-row-gap: 8px;
+  }
+
+  .note-loom-settings {
+    --note-loom-settings-inset: 16px;
+  }
+
+  .note-loom-settings .setting-item,
+  .note-loom-modal .setting-item {
+    padding: 10px 12px;
+    border-radius: 0;
+  }
+
+  .note-loom-template-config-modal .setting-item {
+    padding: 10px 12px;
+  }
+
+  .note-loom-generate-modal .setting-item {
+    padding: 10px 12px;
+  }
+
+  .note-loom-settings .setting-item-control > button,
+  .note-loom-modal .setting-item-control > button,
+  .note-loom-modal-footer > button {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .note-loom-compact-setting .setting-item-control {
+    min-width: 0;
+  }
+
+  .note-loom-template-config-modal .note-loom-template-field-item input[type="text"] {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .note-loom-template-config-modal .note-loom-template-field-item {
+    grid-template-columns: 1fr;
+  }
+
+  .note-loom-template-config-modal .note-loom-template-field-item .setting-item-info,
+  .note-loom-template-config-modal .note-loom-template-field-item .setting-item-control {
+    grid-column: 1;
+    max-width: 100%;
+  }
+
+  .note-loom-template-config-modal .note-loom-modal-section:not(.note-loom-field-config-group) .setting-item {
+    grid-template-columns: 1fr;
+  }
+
+  .note-loom-template-config-modal .note-loom-modal-section:not(.note-loom-field-config-group) .setting-item .setting-item-info,
+  .note-loom-template-config-modal .note-loom-modal-section:not(.note-loom-field-config-group) .setting-item .setting-item-control {
+    grid-column: 1;
+    max-width: 100%;
+  }
+
+  .note-loom-settings .note-loom-three-column-group .setting-item {
+    grid-template-columns: 1fr;
+  }
+
+  .note-loom-settings .note-loom-three-column-group .setting-item .setting-item-info,
+  .note-loom-settings .note-loom-three-column-group .setting-item .setting-item-control {
+    grid-column: 1;
+    max-width: 100%;
+  }
+
+  .note-loom-template-config-modal .note-loom-semantic-split-row {
+    grid-template-columns: 1fr;
+  }
+
+  .note-loom-template-config-modal .note-loom-semantic-split-controls {
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  .note-loom-template-config-modal .note-loom-semantic-controls-meta {
+    justify-content: flex-start;
+  }
+
+  .note-loom-template-config-modal .note-loom-semantic-enum-column-titles,
+  .note-loom-template-config-modal .note-loom-semantic-enum-inputs {
+    grid-column: 1;
+    max-width: 100%;
+  }
+
+  .note-loom-template-field-list {
+    margin-inline: var(--note-loom-settings-inset);
+  }
+
+  .note-loom-template-config-modal .note-loom-modal-section {
+    margin-inline: var(--note-loom-settings-inset);
+  }
+
+  .note-loom-modal .note-loom-modal-section {
+    margin-inline: var(--note-loom-settings-inset);
+    padding: 6px 12px;
+  }
+
+  .note-loom-field-row .setting-item-control {
+    --note-loom-field-row-control-columns: 1fr;
+  }
+
+  .note-loom-generate-modal .note-loom-field-row {
+    --note-loom-generate-field-row-block-padding: 10px;
+  }
+
+  .note-loom-generate-modal .note-loom-integrity-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .note-loom-generate-modal .note-loom-generate-summary-row {
+    grid-template-columns: 1fr;
+    row-gap: 4px;
+  }
+
+  .note-loom-generate-modal .note-loom-run-diff-field,
+  .note-loom-generate-modal .note-loom-run-diff-action-cell,
+  .note-loom-generate-modal .note-loom-run-diff-value-cell {
+    padding-inline: 0;
+  }
+
+  .note-loom-generate-modal .note-loom-generate-inline-control .setting-item-control,
+  .note-loom-generate-modal .note-loom-generate-inline-control.note-loom-path-setting .setting-item-control {
+    flex-wrap: wrap;
+  }
+
+  .note-loom-generate-modal .note-loom-generate-inline-control .setting-item-control > select,
+  .note-loom-generate-modal .note-loom-generate-inline-control .setting-item-control > input[type="text"] {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .note-loom-generate-modal .note-loom-generate-inline-control .setting-item-control > button {
+    width: auto;
+    min-width: 84px !important;
+  }
+
+  .note-loom-modal-footer {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+.note-loom-generate-modal {
+  --note-loom-preview-width: calc(100% - (var(--note-loom-settings-inset) * 2));
+}
+
+.note-loom-runtime-flag {
+  padding-left: 0;
+}
+
+.note-loom-runtime-flag.is-high {
+  color: var(--text-error);
+}
+
+.note-loom-runtime-flag.is-warn {
+  color: var(--text-warning);
+}
+
+.note-loom-runtime-flag.is-info {
+  color: var(--text-muted);
+}
+}

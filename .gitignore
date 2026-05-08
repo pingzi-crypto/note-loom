@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Local Obsidian plugin runtime state
+data.json
+data.json.bak*
+
+# Generated release/package folders and coverage
+release/
+dist/
+coverage/
+
+# Internal project planning, verification notes, and test suites.
+# Marketplace-facing docs should stay in README.md / LICENSE.
+docs/
+tests/
+
+# Common local/editor artifacts
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.bak
+.vscode/
+.idea/

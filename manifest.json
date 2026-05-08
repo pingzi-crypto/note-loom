@@ -1,0 +1,10 @@
+{
+  "id": "note-loom",
+  "name": "Note Loom",
+  "version": "0.1.0",
+  "minAppVersion": "0.15.0",
+  "description": "Weave free-form notes into structured Obsidian notes with your own templates, fields, tables, and checklists.",
+  "author": "pingzi-crypto",
+  "authorUrl": "https://github.com/pingzi-crypto",
+  "isDesktopOnly": false
+}

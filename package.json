@@ -1,0 +1,32 @@
+{
+  "name": "note-loom",
+  "version": "0.1.0",
+  "description": "Weave free-form notes into structured Obsidian notes with your own templates, fields, tables, and checklists.",
+  "author": "pingzi-crypto",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node esbuild.config.mjs",
+    "build": "tsc --noEmit --skipLibCheck && node esbuild.config.mjs production",
+    "test": "vitest run",
+    "ui:gate": "node scripts/check-ui-gate.mjs",
+    "class:audit": "node scripts/check-class-audit.mjs",
+    "ledger:draft:audit": "node scripts/check-ledger-rules-draft.mjs",
+    "release:check": "node scripts/check-release-artifacts.mjs"
+  },
+  "keywords": [
+    "obsidian",
+    "obsidian-plugin"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.19.0",
+    "esbuild": "^0.25.5",
+    "tslib": "^2.8.1",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  },
+  "dependencies": {
+    "obsidian": "latest"
+  }
+}
