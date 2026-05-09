@@ -49,7 +49,7 @@ export function markPathSetting(setting: Setting): Setting {
 }
 
 function clearDropdownOptions(dropdown: DropdownLike): void {
-  const selectEl = dropdown.selectEl as HTMLSelectElement;
+  const selectEl = dropdown.selectEl;
   selectEl.innerHTML = "";
 }
 
@@ -97,7 +97,7 @@ export function bindFolderOptionsRefresh(
   };
 
   refresh();
-  const selectEl = dropdown.selectEl as HTMLSelectElement;
+  const selectEl = dropdown.selectEl;
   selectEl.addEventListener("pointerdown", refresh);
   selectEl.addEventListener("focus", refresh);
 }
@@ -116,7 +116,7 @@ export function bindNoteOptionsRefresh(
   };
 
   refresh();
-  const selectEl = dropdown.selectEl as HTMLSelectElement;
+  const selectEl = dropdown.selectEl;
   selectEl.addEventListener("pointerdown", refresh);
   selectEl.addEventListener("focus", refresh);
 }

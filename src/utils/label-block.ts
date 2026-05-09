@@ -69,12 +69,12 @@ export type LabelTruncationStrategy =
   | "frontmatter-short-value";
 
 const LABEL_BOUNDARY_SEPARATOR_PATTERN = "[：:=，,。；;、|｜/\\\\\\-—–~·]|\\s+";
-const EXPLICIT_LABEL_DELIMITER_PATTERN = /[:：=，,。；;、|｜/\\\-—–~·]/u;
+const EXPLICIT_LABEL_DELIMITER_PATTERN = /[:：=，,。；;、|｜/\\—–~·-]/u;
 const ASCII_LIKE_LABEL_PATTERN = /^[A-Za-z0-9_:-]+$/;
-const COMPACT_LABEL_VALUE_SEPARATOR_PATTERN = /[:：=，,；;、|｜/\\\-—–~·\s]/u;
+const COMPACT_LABEL_VALUE_SEPARATOR_PATTERN = /[:：=，,；;、|｜/\\—–~·\s-]/u;
 const SENTENCE_TERMINATOR_PATTERN = /^[。．.!！?？]/u;
-const OPENING_QUOTE_OR_BRACKET_PATTERN = /[（(\[【{「『“"‘']/u;
-const CLOSING_QUOTE_OR_BRACKET_PATTERN = /[）)\]】}」』”"’']/u;
+const OPENING_QUOTE_OR_BRACKET_PATTERN = new RegExp("[（(\\u005b【{「『“\"‘']", "u");
+const CLOSING_QUOTE_OR_BRACKET_PATTERN = new RegExp("[）)\\u005d】}」』”\"’']", "u");
 
 export function escapeRegExp(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -381,7 +381,7 @@ export function hasKnownLabelStructuralBoundary(context: KnownLabelBoundaryConte
   if (
     isAsciiLikeLabel(context.label) &&
     /^\s+$/.test(context.delimiter) &&
-    /^(?:(?:是|为|我给|大概|约)(?=\s|$|[^\x00-\x7F])|[A-Za-z0-9_\-]+)/iu.test(afterLabel)
+    /^(?:(?:是|为|我给|大概|约)(?=\s|$|[^\x00-\x7F])|[A-Za-z0-9_-]+)/iu.test(afterLabel)
   ) {
     return true;
   }
@@ -549,7 +549,7 @@ export function normalizeInlineLabelValue(value: string): string {
     .trim()
     .replace(/^[，,。；;、]\s*/u, "")
     .replace(keepShortJudgement ? /^$/u : /^(?:(?:如果|若)?要填的话(?:就是|是)?|如果(?:要填)?(?:就是|是)|是(?=\s|["“]|\d)|为(?=\s|["“]|\d)|我给|大概|约|[=:：])\s*/i, "")
-    .replace(/(?<=[0-9%％])[。．.]+$/u, "")
+    .replace(/([0-9%％])[。．.]+$/u, "$1")
     .replace(/[，,；;\s]+$/g, "")
     .trim();
 

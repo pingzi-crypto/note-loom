@@ -302,7 +302,7 @@ function behaviorLabelsMatch(
   }
 
   if (left.kind === "mixed_field_block" && right.kind === "mixed_field_block") {
-    const serializeItem = (item: (typeof left.items)[number] | (typeof right.items)[number]): string => {
+    const serializeItem = (item: (typeof left.items)[number]): string => {
       if (item.kind === "checkbox_enum") {
         return [
           item.kind,

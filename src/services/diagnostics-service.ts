@@ -53,8 +53,24 @@ function normalizeError(error: unknown): Record<string, string> {
 
   return {
     name: "UnknownError",
-    message: String(error ?? "")
+    message: stringifyUnknownError(error)
   };
+}
+
+function stringifyUnknownError(error: unknown): string {
+  if (error === null || error === undefined) {
+    return "";
+  }
+
+  if (typeof error === "string") {
+    return error;
+  }
+
+  try {
+    return JSON.stringify(error) ?? "";
+  } catch {
+    return String(error);
+  }
 }
 
 function sanitizeValue(value: unknown): unknown {

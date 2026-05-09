@@ -3,6 +3,7 @@ import type { TemplateFieldRule } from "../types/rules";
 import type { FieldStructureDescriptor } from "../types/template-structure-descriptor";
 import { isBooleanLikeOptionSet } from "../utils/boolean-like-field";
 import {
+  isTemplateFieldContext,
   resolveTemplateFieldContextFields,
   type TemplateFieldContext
 } from "./template-field-state-service";
@@ -30,7 +31,8 @@ function resolveFieldDescriptors(fields: TemplateGenericFieldRuleInput): FieldSt
     return fields;
   }
 
-  return resolveTemplateFieldContextFields(fields as TemplateFieldContext | TemplateFieldConfig[])
+  const templateFields = isTemplateFieldContext(fields) ? resolveTemplateFieldContextFields(fields) : fields;
+  return templateFields
     .map((field) => buildFieldStructureDescriptor(field, undefined));
 }
 

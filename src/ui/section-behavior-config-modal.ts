@@ -602,7 +602,9 @@ export class SectionBehaviorConfigModal extends Modal {
         .setDesc(t(settings.language, "section_behavior_presence_field_desc"))
         .addDropdown((dropdown) => {
           dropdown.addOption("", t(settings.language, "none_label"));
-          this.getCurrentFields().forEach((field) => dropdown.addOption(field.name, field.name));
+          this.getCurrentFields().forEach((field) => {
+            dropdown.addOption(field.name, field.name);
+          });
           dropdown.setValue(group.presenceFieldName ?? "").onChange((value) => {
             group.presenceFieldName = value || undefined;
           });
@@ -754,7 +756,9 @@ export class SectionBehaviorConfigModal extends Modal {
           .setName(t(settings.language, "section_behavior_item_target_field"))
           .addDropdown((dropdown) => {
             dropdown.addOption("", t(settings.language, "none_label"));
-            this.getCurrentFields().forEach((field) => dropdown.addOption(field.name, field.name));
+            this.getCurrentFields().forEach((field) => {
+              dropdown.addOption(field.name, field.name);
+            });
             dropdown.setValue(item.targetFieldName ?? "").onChange((value) => {
               item.targetFieldName = value || undefined;
             });
@@ -781,7 +785,9 @@ export class SectionBehaviorConfigModal extends Modal {
           .setName(t(settings.language, "section_behavior_item_target_field"))
           .addDropdown((dropdown) => {
             dropdown.addOption("", t(settings.language, "none_label"));
-            this.getCurrentFields().forEach((field) => dropdown.addOption(field.name, field.name));
+            this.getCurrentFields().forEach((field) => {
+              dropdown.addOption(field.name, field.name);
+            });
             dropdown.setValue(item.targetFieldName ?? "").onChange((value) => {
               item.targetFieldName = value || undefined;
             });
@@ -805,7 +811,9 @@ export class SectionBehaviorConfigModal extends Modal {
           .setName(t(settings.language, "section_behavior_item_target_field"))
           .addDropdown((dropdown) => {
             dropdown.addOption("", t(settings.language, "none_label"));
-            this.getCurrentFields().forEach((field) => dropdown.addOption(field.name, field.name));
+            this.getCurrentFields().forEach((field) => {
+              dropdown.addOption(field.name, field.name);
+            });
             dropdown.setValue(item.targetFieldName ?? "").onChange((value) => {
               item.targetFieldName = value || undefined;
             });
@@ -861,7 +869,9 @@ export class SectionBehaviorConfigModal extends Modal {
         .setName(t(settings.language, "section_behavior_item_field_target"))
         .addDropdown((dropdown) => {
           dropdown.addOption("", t(settings.language, "none_label"));
-          this.getCurrentFields().forEach((templateField) => dropdown.addOption(templateField.name, templateField.name));
+          this.getCurrentFields().forEach((templateField) => {
+            dropdown.addOption(templateField.name, templateField.name);
+          });
           dropdown.setValue(field.fieldName).onChange((value) => {
             field.fieldName = value;
             if (!field.label) {

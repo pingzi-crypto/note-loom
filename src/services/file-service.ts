@@ -46,7 +46,7 @@ export class FileService {
     }
   }
 
-  async resolveUniqueNotePath(folderPath: string, filename: string): Promise<string> {
+  resolveUniqueNotePath(folderPath: string, filename: string): string {
     const safeFilename = sanitizeFilename(filename) || fallbackFilename(new Date());
     const normalizedFolderPath = normalizePath(folderPath.trim());
     let attempt = 0;

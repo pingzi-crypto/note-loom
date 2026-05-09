@@ -5,6 +5,7 @@ import type {
 } from "../types/template";
 import type { FieldStructureDescriptor } from "../types/template-structure-descriptor";
 import {
+  isTemplateFieldContext,
   resolveTemplateFieldContextFields,
   type TemplateFieldContext
 } from "./template-field-state-service";
@@ -36,7 +37,7 @@ function resolveLinkFields(fields: TemplateFieldLinkInput): TemplateFieldConfig[
     return fields.map(fieldStructureDescriptorToConfig);
   }
 
-  return resolveTemplateFieldContextFields(fields as TemplateFieldContext | TemplateFieldConfig[]);
+  return isTemplateFieldContext(fields) ? resolveTemplateFieldContextFields(fields) : fields;
 }
 
 function addLink(adjacency: Map<string, Set<string>>, left: string, right: string): void {

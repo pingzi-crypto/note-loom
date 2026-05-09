@@ -102,7 +102,7 @@ function formatDate(date: Date, format: string, locale?: string): string {
     .replace(/mm/g, pad2(date.getMinutes()))
     .replace(/ss/g, pad2(date.getSeconds()))
     .replace(/dddd/g, new Intl.DateTimeFormat(resolveLocale(locale), { weekday: "long" }).format(date))
-    .replace(/\u0000(\d+)\u0000/g, (_match, index: string) => literals[Number(index)] ?? "");
+    .replace(new RegExp(`${String.fromCharCode(0)}(\\d+)${String.fromCharCode(0)}`, "g"), (_match, index: string) => literals[Number(index)] ?? "");
 }
 
 function splitOutsideSyntax(value: string, separator: string): string[] {

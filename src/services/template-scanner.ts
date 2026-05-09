@@ -109,7 +109,7 @@ function parseInlineEnumOptions(rawValue: string): string[] {
     return [];
   }
 
-  if (/[<>{}\[\]]/.test(trimmed) || /:\/\//.test(trimmed)) {
+  if (/[<>{}[\]]/.test(trimmed) || /:\/\//.test(trimmed)) {
     return [];
   }
 

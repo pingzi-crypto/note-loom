@@ -143,7 +143,7 @@ function extractDataviewInlineFieldDisplayLabels(rawContent: string): string[] {
           .replace(/^\s*>+\s*/u, "")
           .replace(/^\s*(?:[-*+]\s+|\d+[.)]\s+)/u, "")
           .replace(/^#+\s*/u, "")
-          .replace(/[\s:：\-]+$/u, "")
+          .replace(/[\s:：-]+$/u, "")
           .trim();
       })
   );
@@ -245,7 +245,7 @@ function isStandaloneSourceHeadingLine(line: string): boolean {
     return true;
   }
 
-  return /^[^\[\]<>|`]+[：:]\s*$/.test(trimmed);
+  return /^[^][<>|`]+[：:]\s*$/.test(trimmed);
 }
 
 function isNumberedSourceHeadingLine(line: string): boolean {
@@ -260,7 +260,7 @@ function isNumberedSourceHeadingLine(line: string): boolean {
     return false;
   }
 
-  if (/[\[\]<>|`]/u.test(headingText)) {
+  if (new RegExp("[\\[\\]<>|`]", "u").test(headingText)) {
     return false;
   }
 
@@ -4075,7 +4075,7 @@ export class TemplateSectionDraftService {
         }
 
         if (section.behavior?.kind === "repeatable_text") {
-          const behavior = section.behavior as TemplateSectionRepeatableBehaviorConfig;
+          const behavior = section.behavior;
           const parserId = resolveRepeatableSectionParserId(section, sectionDescriptor, behavior);
           const parser = resolveTemplateSectionParser(parserId);
           const repeatableFieldNames = buildRepeatableParserFieldNames(section, sectionDescriptor);

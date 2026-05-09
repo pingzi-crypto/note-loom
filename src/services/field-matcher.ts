@@ -52,7 +52,7 @@ function resolveMatcherFields(fields: FieldMatcherCollectionInput): FieldMatcher
     return fields;
   }
 
-  return resolveTemplateFieldContextFields(fields as TemplateFieldContext | TemplateFieldConfig[]);
+  return Array.isArray(fields) ? fields : resolveTemplateFieldContextFields(fields);
 }
 
 function resolveStructuralBoundaryLabels(fields: FieldMatcherCollectionInput): string[] {
@@ -101,11 +101,11 @@ function isStandaloneSectionHeadingLine(line: string): boolean {
     return true;
   }
 
-  return /^[^\[\]<>|]+[：:]\s*$/.test(trimmed);
+  return /^[^][<>|]+[：:]\s*$/.test(trimmed);
 }
 
 function isCompactSectionContentLine(line: string): boolean {
-  return /^\s*(?![-*+]\s+)(?!#{1,6}\s+)[^\[\]<>|：:\r\n]{2,24}[：:]\s*\S/u.test(line);
+  return /^\s*(?![-*+]\s+)(?!#{1,6}\s+)[^][<>|：:\r\n]{2,24}[：:]\s*\S/u.test(line);
 }
 
 function collectBlockForLabel(

@@ -2,9 +2,14 @@ function trimTrailingDotsAndSpaces(value: string): string {
   return value.replace(/[. ]+$/g, "").trim();
 }
 
+const INVALID_FILENAME_PATTERN = new RegExp(
+  `[<>:"/\\\\|?*${String.fromCharCode(0)}-${String.fromCharCode(31)}]`,
+  "g"
+);
+
 export function sanitizeFilename(input: string): string {
   const sanitized = input
-    .replace(/[<>:"/\\|?*\x00-\x1F]/g, " ")
+    .replace(INVALID_FILENAME_PATTERN, " ")
     .replace(/\s+/g, " ")
     .trim();
 

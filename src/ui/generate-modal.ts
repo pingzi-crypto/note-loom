@@ -533,8 +533,8 @@ export class GenerateModal extends Modal {
       .addButton((button) =>
         button
           .setButtonText(t(settings.language, "rematch_all"))
-          .onClick(async () => {
-            await this.rematchAll();
+          .onClick(() => {
+            this.rematchAll();
             this.render();
           })
       );
@@ -1615,8 +1615,8 @@ export class GenerateModal extends Modal {
         button.buttonEl.addClass("note-loom-field-action");
         button.buttonEl.addClass("note-loom-field-secondary-action");
         rematchButtonEl = button.buttonEl;
-        button.onClick(async () => {
-          await this.rematchField(result.fieldName);
+        button.onClick(() => {
+          this.rematchField(result.fieldName);
           this.render();
         });
       });
@@ -1838,7 +1838,7 @@ export class GenerateModal extends Modal {
     this.fieldAutoState.set(result, createTemplateFieldAutoState(result));
   }
 
-  private async rematchAll(): Promise<void> {
+  private rematchAll(): void {
     const settings = this.settingsService.getSettings();
     const matcherFields = this.getMatcherFields();
     const normalizedSourceText = this.getNormalizedSourceText();
@@ -1858,7 +1858,7 @@ export class GenerateModal extends Modal {
     this.refreshPreview();
   }
 
-  private async rematchField(fieldName: string): Promise<void> {
+  private rematchField(fieldName: string): void {
     const fieldConfig = this.currentFields.find((field) => field.name === fieldName);
     const previous = this.fieldResults.find((field) => field.fieldName === fieldName);
 
@@ -2069,7 +2069,7 @@ export class GenerateModal extends Modal {
     });
   }
 
-  private async openTemplateRulesModal(): Promise<void> {
+  private openTemplateRulesModal(): void {
     const template = this.settingsService.getTemplate(this.selectedTemplateId);
     if (!template) {
       new Notice(t(this.settingsService.getSettings().language, "selected_template_not_found"));

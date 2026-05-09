@@ -173,7 +173,7 @@ export function truncateValueAtSectionBoundary<TSource>(
   });
 
   const truncatedValue = value.slice(0, endIndex);
-  if (endIndex < value.length && /[（(\[【{「『“"‘']$/u.test(truncatedValue.trimEnd())) {
+  if (endIndex < value.length && /[（([【{「『“"‘']$/u.test(truncatedValue.trimEnd())) {
     return normalizeInlineLabelValue(value);
   }
 
