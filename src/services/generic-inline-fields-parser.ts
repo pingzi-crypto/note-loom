@@ -145,7 +145,7 @@ function hasMalformedInlineFieldFragments(content: string): boolean {
   return /\[\s*\[[^\]\r\n:]+::/u.test(content) ||
     /\[\]\s*\[/u.test(content) ||
     /\[[^\]\r\n:]+::\s*:/u.test(content) ||
-    /\[[^\]\r\n:]+::\s*\]\s*\r?\n\s*[-*+]\s+[^][\r\n]+\s+\[[^\]\r\n:]+::/u.test(content);
+    /\[[^\]\r\n:]+::\s*\]\s*\r?\n\s*[-*+]\s+[^[\r\n]+\s+\[[^\]\r\n:]+::/u.test(content);
 }
 
 function parseExistingInlineFieldRows(content: string, fieldNames: string[]): string[] {

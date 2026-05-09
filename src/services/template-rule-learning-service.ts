@@ -29,17 +29,6 @@ function cloneField(field: TemplateFieldConfig): TemplateFieldConfig {
   };
 }
 
-function isSameAliasCandidate(candidate: string, option: EnumOptionConfig): boolean {
-  const normalized = normalizeCompareValue(candidate);
-  if (!normalized) {
-    return true;
-  }
-
-  return [option.label, option.normalizedValue, ...option.aliases]
-    .map((value) => normalizeCompareValue(value))
-    .includes(normalized);
-}
-
 function findMatchingEnumOption(
   finalValue: string,
   options: EnumOptionConfig[]

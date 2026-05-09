@@ -74,13 +74,6 @@ function parseAliases(value: string): string[] {
     .filter((alias) => alias.length > 0);
 }
 
-function parseFieldOptions(value: string): string[] {
-  return value
-    .split(/[,\uFF0C;\uFF1B\r\n]+/)
-    .map((option) => option.trim())
-    .filter((option) => option.length > 0);
-}
-
 function ensureFilenameField(
   currentValue: string,
   fields: TemplateFieldConfig[]

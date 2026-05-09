@@ -68,7 +68,6 @@ export type LabelTruncationStrategy =
   | "table-cell"
   | "frontmatter-short-value";
 
-const LABEL_BOUNDARY_SEPARATOR_PATTERN = "[：:=，,。；;、|｜/\\\\\\-—–~·]|\\s+";
 const EXPLICIT_LABEL_DELIMITER_PATTERN = /[:：=，,。；;、|｜/\\—–~·-]/u;
 const ASCII_LIKE_LABEL_PATTERN = /^[A-Za-z0-9_:-]+$/;
 const COMPACT_LABEL_VALUE_SEPARATOR_PATTERN = /[:：=，,；;、|｜/\\—–~·\s-]/u;

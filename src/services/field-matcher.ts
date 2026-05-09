@@ -101,11 +101,11 @@ function isStandaloneSectionHeadingLine(line: string): boolean {
     return true;
   }
 
-  return /^[^][<>|]+[：:]\s*$/.test(trimmed);
+  return new RegExp("^[^\\[\\]<>|]+[：:]\\s*$").test(trimmed);
 }
 
 function isCompactSectionContentLine(line: string): boolean {
-  return /^\s*(?![-*+]\s+)(?!#{1,6}\s+)[^][<>|：:\r\n]{2,24}[：:]\s*\S/u.test(line);
+  return new RegExp("^\\s*(?![-*+]\\s+)(?!#{1,6}\\s+)[^\\[\\]<>|：:\\r\\n]{2,24}[：:]\\s*\\S", "u").test(line);
 }
 
 function collectBlockForLabel(

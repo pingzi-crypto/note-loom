@@ -140,7 +140,7 @@ export class GenerateRunService {
   async createGeneratedNote(input: GenerateRunCreateInput): Promise<GenerateRunCreateResult> {
     await this.deps.fileService.ensureFolderExists(input.outputPath);
 
-    const notePath = this.deps.fileService.resolveUniqueNotePath(input.outputPath, input.filename);
+    const notePath = await this.deps.fileService.resolveUniqueNotePath(input.outputPath, input.filename);
     const content = input.previewContent.trim() || this.renderContent(input.renderInput);
     const createdFile = await this.deps.fileService.createNote(notePath, content);
     let templaterResult: TemplaterProcessResult | null = null;

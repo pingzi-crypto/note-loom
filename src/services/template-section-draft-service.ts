@@ -310,35 +310,6 @@ function extractTemplateTaskItems(section: TemplateSectionConfig, templateConten
   );
 }
 
-function extractSectionTaskTemplateContent(templateContent: string, section: TemplateSectionConfig): string {
-  if (!templateContent.trim()) {
-    return "";
-  }
-
-  const escapedTitle = escapeRegExp(section.title);
-  const headingPattern = new RegExp(`(^|\\n)(#{1,6})\\s+${escapedTitle}\\s*(?:\\n|$)`, "u");
-  const match = templateContent.match(headingPattern);
-  if (!match?.index) {
-    return "";
-  }
-
-  const startIndex = match.index + match[0].length;
-  const headingLevel = match[2]?.length ?? 1;
-  const rest = templateContent.slice(startIndex);
-  const nextHeadingPattern = new RegExp(`\\n#{1,${headingLevel}}\\s+`, "u");
-  const nextHeadingMatch = rest.match(nextHeadingPattern);
-  return nextHeadingMatch?.index !== undefined ? rest.slice(0, nextHeadingMatch.index) : rest;
-}
-
-function sectionLooksLikeStandaloneStructureBoundary(line: string): boolean {
-  const trimmed = line.trim();
-  return (
-    /^(?:#{1,6}\s+|>\s*#{1,6}\s+)/.test(trimmed) ||
-    /^[-*+]\s+\[[ xX]\]\s+/.test(trimmed) ||
-    /^[^：:]{2,40}[：:]\s*$/.test(trimmed)
-  );
-}
-
 function stripGroupedValueAfterKnownStopLabelFragments(value: string, stopLabels: string[]): string {
   const normalizedValue = value.trim();
   if (!normalizedValue) {
@@ -1635,7 +1606,6 @@ const COMPLETED_ONLY_TASK_LINE_LABELS = [
 ];
 const COMPLETED_ONLY_TASK_HINT_SEPARATOR_PATTERN = "[：:\\s]+";
 const COMPLETED_ONLY_TASK_HINT_LINE_SEPARATOR_PATTERN = "[：:]|\\s+";
-const COMPLETED_OPTION_HINT_SEPARATOR_PATTERN = "[：:]\\s*|\\s+";
 
 function normalizeTaskPrefix(prefix: string): string {
   return /\s$/.test(prefix) ? prefix : `${prefix.trimEnd()} `;
@@ -2665,36 +2635,6 @@ function buildGroupedTemplateFieldIdsByGroup(
     );
   });
 
-  return result;
-}
-
-function buildGroupedFieldIdsByOrderFallback(
-  behavior: TemplateSectionGroupedFieldBlockBehaviorConfig
-): Map<string, Set<string>> {
-  const result = new Map<string, Set<string>>();
-  const assigned = new Set<string>();
-  behavior.groups.forEach((group, index) => {
-    const nextGroup = behavior.groups[index + 1];
-    const startIndex = behavior.fields.findIndex((field) =>
-      field.label.trim() === group.label.trim() || field.id.trim() === group.id.trim()
-    );
-    const nextStartIndex = nextGroup
-      ? behavior.fields.findIndex((field) =>
-        field.label.trim() === nextGroup.label.trim() || field.id.trim() === nextGroup.id.trim()
-      )
-      : -1;
-    const sliceStart = startIndex >= 0 ? startIndex + 1 : 0;
-    const sliceEnd = nextStartIndex > sliceStart ? nextStartIndex : behavior.fields.length;
-    const fieldIds = new Set<string>();
-    behavior.fields.slice(sliceStart, sliceEnd).forEach((field) => {
-      if (assigned.has(field.id)) {
-        return;
-      }
-      fieldIds.add(field.id);
-      assigned.add(field.id);
-    });
-    result.set(group.id, fieldIds);
-  });
   return result;
 }
 

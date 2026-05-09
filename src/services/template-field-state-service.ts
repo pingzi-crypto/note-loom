@@ -200,7 +200,8 @@ function cloneField(field: TemplateFieldConfig): TemplateFieldConfig {
 
 export function resetFieldRecognitionConfig(fields: TemplateFieldConfig[]): TemplateFieldConfig[] {
   return fields.map((field) => {
-    const { normalizerKey: _normalizerKey, ...clonedField } = cloneField(field);
+    const clonedField = cloneField(field);
+    delete clonedField.normalizerKey;
     return {
       ...clonedField,
       aliases: [],

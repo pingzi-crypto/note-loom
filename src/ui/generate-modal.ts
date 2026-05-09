@@ -579,7 +579,6 @@ export class GenerateModal extends Modal {
 
     const runtimeGateState = this.getRuntimeGateState();
     const hasRuntimeBlockingRisk = runtimeGateState.hasBlockingRisk;
-    const sectionDraftWarnings = this.getSectionDraftWarnings();
     const shouldWarnBeforeGenerate = Boolean(
       integrityReport?.hasBlockingIssues || hasRuntimeBlockingRisk
     );

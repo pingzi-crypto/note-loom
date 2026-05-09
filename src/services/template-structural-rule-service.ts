@@ -1,6 +1,5 @@
 import type {
   EnumOptionConfig,
-  RenderTargetRef,
   StructuralMappingFieldConfig,
   StructuralMappingValueType,
   TemplateFieldConfig,

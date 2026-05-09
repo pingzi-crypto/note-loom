@@ -4,8 +4,7 @@ import {
   type RepeatableEntryParseResult
 } from "./repeatable-entry-parser";
 import {
-  parseExistingInlineFieldContent,
-  repairRepeatableInlineFieldDraft
+  parseExistingInlineFieldContent
 } from "./repeatable-inline-repair";
 import {
   dedupeInlineFieldNames,
@@ -76,8 +75,7 @@ function stripLeadingInlineHeader(value: string, sectionLabels?: string[]): stri
 
   labels.forEach((label) => {
     const pattern = new RegExp(`(?:^|[\\s，,。；;、])${escapeRegExp(label)}\\s*[：:]`, "gu");
-    let match: RegExpExecArray | null;
-    while ((match = pattern.exec(normalized)) !== null) {
+    while (pattern.exec(normalized) !== null) {
       startIndex = Math.max(startIndex, pattern.lastIndex);
     }
   });

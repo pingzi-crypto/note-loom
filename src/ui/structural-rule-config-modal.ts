@@ -17,7 +17,6 @@ import type {
 import {
   createModalActionFooter,
   createModalSection,
-  createSingleLeftNoteRow,
   createModalTitle,
   prepareModalShell
 } from "./ui-entry";
@@ -31,13 +30,6 @@ function parseAliases(value: string): string[] {
     .split(/[,\uFF0C;\uFF1B\r\n]+/)
     .map((alias) => alias.trim())
     .filter((alias) => alias.length > 0);
-}
-
-function serializeDelimitedValues(values: string[]): string {
-  return values
-    .map((value) => value.trim())
-    .filter((value) => value.length > 0)
-    .join("；");
 }
 
 function createBlankRenderTargetId(): string {
