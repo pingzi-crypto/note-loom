@@ -371,6 +371,26 @@ export function isSentenceTerminatedKnownLabelValue(context: { textAfterLabel: s
   return SENTENCE_TERMINATOR_PATTERN.test(context.textAfterLabel.trimStart());
 }
 
+function isNonAsciiCharacter(value: string): boolean {
+  const codePoint = value.codePointAt(0);
+  return codePoint !== undefined && codePoint > 0x7f;
+}
+
+function startsWithKnownStructuralValue(value: string): boolean {
+  if (/^[A-Za-z0-9_-]+/iu.test(value)) {
+    return true;
+  }
+
+  return ["是", "为", "我给", "大概", "约"].some((prefix) => {
+    if (!value.startsWith(prefix)) {
+      return false;
+    }
+
+    const nextChar = value.slice(prefix.length, prefix.length + 1);
+    return !nextChar || /\s/u.test(nextChar) || isNonAsciiCharacter(nextChar);
+  });
+}
+
 export function hasKnownLabelStructuralBoundary(context: KnownLabelBoundaryContext): boolean {
   const afterLabel = context.textAfterLabel.trimStart();
   if (!afterLabel || isSentenceTerminatedKnownLabelValue({ textAfterLabel: afterLabel })) {
@@ -380,7 +400,7 @@ export function hasKnownLabelStructuralBoundary(context: KnownLabelBoundaryConte
   if (
     isAsciiLikeLabel(context.label) &&
     /^\s+$/.test(context.delimiter) &&
-    /^(?:(?:是|为|我给|大概|约)(?=\s|$|[^\x00-\x7F])|[A-Za-z0-9_-]+)/iu.test(afterLabel)
+    startsWithKnownStructuralValue(afterLabel)
   ) {
     return true;
   }

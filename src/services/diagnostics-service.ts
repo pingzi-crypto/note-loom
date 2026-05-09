@@ -69,7 +69,16 @@ function stringifyUnknownError(error: unknown): string {
   try {
     return JSON.stringify(error) ?? "";
   } catch {
-    return String(error);
+    if (typeof error === "object") {
+      const message = (error as { message?: unknown })?.message;
+      return typeof message === "string" ? message : "[unserializable error]";
+    }
+
+    if (typeof error === "number" || typeof error === "boolean" || typeof error === "bigint") {
+      return error.toString();
+    }
+
+    return "[unserializable error]";
   }
 }
 
