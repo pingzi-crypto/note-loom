@@ -2855,7 +2855,7 @@ function extractStructuredTableRows(
   content: string,
   columns: TemplateSectionBehaviorFieldConfig[],
   boundaryPolicy: TemplateSectionBoundaryPolicyConfig = {},
-  sectionStopLabels: string[] = [],
+  _sectionStopLabels: string[] = [],
   sectionStopRules: SectionStopRule[] = []
 ): Array<Record<string, string>> {
   const tableSectionStopLabels = sectionStopRules.flatMap((rule) => rule.labels);

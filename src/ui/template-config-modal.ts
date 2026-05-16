@@ -727,7 +727,7 @@ export class TemplateConfigModal extends Modal {
       const completedHeader = completedGroup.createDiv({
         cls: "note-loom-structural-rule-group-header"
       });
-      completedHeader.createEl("div", {
+      completedHeader.createDiv({
         cls: "note-loom-structural-rule-group-title",
         text: t(settings.language, "completed_structural_rules_group", {
           count: completedConcepts.length

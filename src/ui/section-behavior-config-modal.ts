@@ -341,7 +341,7 @@ export class SectionBehaviorConfigModal extends Modal {
     });
   }
 
-  private renderRepeatableEditor(contentEl: HTMLElement): void {
+  private renderRepeatableEditor(_contentEl: HTMLElement): void {
     const behavior = this.draftBehavior;
     if (!behavior || behavior.kind !== "repeatable_text") {
       return;

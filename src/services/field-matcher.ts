@@ -140,7 +140,7 @@ function collectBlockForLabel(
         { allowTightLabel: true }
       );
     },
-    mapValue: (rawValue, currentLabel, initialMatch) => {
+    mapValue: (rawValue, _currentLabel, initialMatch) => {
       const compactHeadingTrimmedValue = initialMatch.value.length > 0
         ? truncateAtLooseCompactHeading(rawValue)
         : rawValue;

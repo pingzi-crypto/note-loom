@@ -662,11 +662,11 @@ export class GenerateModal extends Modal {
       const summary = groupedSectionWarnings.slice(0, 3)
         .map((warning) => this.formatSectionDraftWarningGroup(warning))
         .join("；");
-      warningContainer.createEl("span", {
+      warningContainer.createSpan({
         text: summary
       });
       if (groupedSectionWarnings.length > 3) {
-        warningContainer.createEl("span", {
+        warningContainer.createSpan({
           cls: "note-loom-section-soft-note-more",
           text: t(language, "generator_section_warning_more", {
             count: String(groupedSectionWarnings.length - 3)
@@ -1228,8 +1228,8 @@ export class GenerateModal extends Modal {
         : detail.summary;
 
     const item = container.createDiv({ cls: "note-loom-learning-detail-item" });
-    item.createEl("span", { text: detail.title });
-    item.createEl("span", { text: summary });
+    item.createSpan({ text: detail.title });
+    item.createSpan({ text: summary });
   }
 
   private renderRunDecisionSection(container: HTMLElement, summary: RunDecisionSummary): void {
@@ -1277,7 +1277,7 @@ export class GenerateModal extends Modal {
 
   private renderRunDecisionRow(container: HTMLElement, field: RunFieldDecision): void {
     const row = container.createDiv({ cls: "note-loom-run-diff-row" });
-    row.createEl("div", {
+    row.createDiv({
       cls: "note-loom-run-diff-field",
       text: field.fieldName
     });
@@ -1287,13 +1287,13 @@ export class GenerateModal extends Modal {
       text: this.getRunDecisionKindLabel(field.kind)
     });
     const valueCell = row.createDiv({ cls: "note-loom-run-diff-value-cell" });
-    valueCell.createEl("div", {
+    valueCell.createDiv({
       cls: "note-loom-run-diff-value",
       text: this.formatRunDecisionValue(field)
     });
     const renderTargetText = this.describeRunDecisionRenderTargets(field.fieldName);
     if (renderTargetText) {
-      valueCell.createEl("div", {
+      valueCell.createDiv({
         cls: "note-loom-section-note note-loom-run-diff-targets",
         text: renderTargetText
       });
@@ -1322,7 +1322,7 @@ export class GenerateModal extends Modal {
 
     reviewView.fieldGroups.forEach((group) => {
       if (reviewView.fieldGroups.length > 1) {
-        container.createEl("div", { cls: "note-loom-section-note", text: group.title });
+        container.createDiv({ cls: "note-loom-section-note", text: group.title });
       }
 
       const groupContainer = container.createDiv({
@@ -1470,7 +1470,7 @@ export class GenerateModal extends Modal {
       });
     }
 
-    row.createEl("span", {
+    row.createSpan({
       cls: `note-loom-integrity-badge note-loom-integrity-badge-${concept.status}`,
       text: this.getIntegrityStatusLabel(concept.status)
     });

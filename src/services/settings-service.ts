@@ -78,7 +78,11 @@ function normalizeTemplateSectionParserId(value: unknown): TemplateSectionParser
 }
 
 function cloneSettings(settings: PluginSettings): PluginSettings {
-  return JSON.parse(JSON.stringify(settings)) as PluginSettings;
+  return JSON.parse(JSON.stringify(settings)) as unknown as PluginSettings;
+}
+
+function cloneTemplate(template: TemplateConfig): TemplateConfig {
+  return JSON.parse(JSON.stringify(template)) as unknown as TemplateConfig;
 }
 
 function readSettingsSchemaVersion(input: unknown): number | undefined {
@@ -1158,7 +1162,7 @@ export class SettingsService {
   constructor(private readonly plugin: Plugin) {}
 
   async load(): Promise<PluginSettings> {
-    const loaded = await this.plugin.loadData();
+    const loaded = (await this.plugin.loadData()) as unknown;
     this.settings = normalizeSettings(loaded);
     if (readSettingsSchemaVersion(loaded) !== CURRENT_SETTINGS_SCHEMA_VERSION) {
       await this.plugin.saveData(this.settings);
@@ -1172,7 +1176,7 @@ export class SettingsService {
 
   getTemplate(templateId: string): TemplateConfig | undefined {
     const found = this.settings.templates.find((template) => template.id === templateId);
-    return found ? JSON.parse(JSON.stringify(found)) : undefined;
+    return found ? cloneTemplate(found) : undefined;
   }
 
   async save(settings: PluginSettings): Promise<void> {

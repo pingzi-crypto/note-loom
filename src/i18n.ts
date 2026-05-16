@@ -1,3 +1,5 @@
+import { getLanguage } from "obsidian";
+
 import type { PluginLanguage } from "./types/settings";
 
 type Locale = "zh" | "en";
@@ -1090,24 +1092,22 @@ function resolveLocale(language: PluginLanguage): Locale {
     return language;
   }
 
-  if (typeof document !== "undefined") {
-    const htmlLanguage = document.documentElement.lang?.toLowerCase();
+  const obsidianLanguage = getLanguage().toLowerCase();
+  if (obsidianLanguage.startsWith("zh")) {
+    return "zh";
+  }
+
+  if (obsidianLanguage.startsWith("en")) {
+    return "en";
+  }
+
+  if (typeof activeDocument !== "undefined") {
+    const htmlLanguage = activeDocument.documentElement.lang?.toLowerCase();
     if (htmlLanguage?.startsWith("zh")) {
       return "zh";
     }
 
     if (htmlLanguage?.startsWith("en")) {
-      return "en";
-    }
-  }
-
-  if (typeof window !== "undefined") {
-    const savedLanguage = window.localStorage.getItem("language")?.toLowerCase();
-    if (savedLanguage?.startsWith("zh")) {
-      return "zh";
-    }
-
-    if (savedLanguage?.startsWith("en")) {
       return "en";
     }
   }

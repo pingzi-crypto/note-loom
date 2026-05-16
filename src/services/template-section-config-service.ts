@@ -40,8 +40,12 @@ export function getRuntimeSectionRawContent(section: TemplateSectionConfig): str
   return sectionRawContentById.get(section) ?? (section as TemplateSectionConfig & { rawContent?: string }).rawContent ?? "";
 }
 
+function cloneJson<T>(value: T): T {
+  return JSON.parse(JSON.stringify(value)) as unknown as T;
+}
+
 function cloneSemanticConfig(config: TemplateSemanticConfig | undefined): TemplateSemanticConfig | undefined {
-  return config ? (JSON.parse(JSON.stringify(config)) as TemplateSemanticConfig) : undefined;
+  return config ? cloneJson(config) : undefined;
 }
 
 function cloneField(field: TemplateFieldConfig): TemplateFieldConfig {
@@ -57,7 +61,7 @@ function cloneSection(section: TemplateSectionConfig): TemplateSectionConfig {
   const cloned = {
     ...section,
     fieldNames: section.fieldNames ? [...section.fieldNames] : undefined,
-    behavior: section.behavior ? JSON.parse(JSON.stringify(section.behavior)) : undefined
+    behavior: section.behavior ? cloneJson(section.behavior) : undefined
   };
   const rawContent = sectionRawContentById.get(section);
   if (rawContent !== undefined) {
@@ -473,7 +477,7 @@ export class TemplateSectionConfigService {
         fieldNames: section.fieldNames,
         hasDataviewCode: section.hasDataviewCode,
         hasTemplaterCode: section.hasTemplaterCode,
-        behavior: nextBehavior ? JSON.parse(JSON.stringify(nextBehavior)) : undefined
+        behavior: nextBehavior ? cloneJson(nextBehavior) : undefined
       }, modeSource, options);
       sectionRawContentById.set(nextSection, section.rawContent);
       return nextSection;

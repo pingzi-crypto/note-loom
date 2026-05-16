@@ -285,7 +285,7 @@ export class TemplateSemanticRenderService {
   }
 
   private renderCompanionValue(
-    sourceField: TemplateFieldConfig,
+    _sourceField: TemplateFieldConfig,
     targetField: TemplateFieldConfig,
     rawValue: string
   ): string {

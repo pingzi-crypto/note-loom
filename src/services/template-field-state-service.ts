@@ -1522,8 +1522,8 @@ export function resolveSectionPendingFieldRowState(
 
 export function buildMatchedFieldTrace(
   translate: (key: string, vars?: Record<string, string>) => string,
-  reviewStatus: TemplateFieldReviewStatus,
-  result: FieldMatchResult,
+  _reviewStatus: TemplateFieldReviewStatus,
+  _result: FieldMatchResult,
   showFieldTraceDetails: boolean,
   fieldDescriptor?: FieldStructureDescriptor
 ): TemplateFieldTraceState {

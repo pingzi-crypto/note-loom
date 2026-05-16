@@ -7,11 +7,15 @@ import type {
 } from "../types/template";
 import { resolveBuiltInSectionEnrichPackEntry } from "./template-rule-pack-service";
 
+function cloneJson<T>(value: T): T {
+  return JSON.parse(JSON.stringify(value)) as unknown as T;
+}
+
 function cloneSection(section: TemplateSectionConfig): TemplateSectionConfig {
   return {
     ...section,
     fieldNames: section.fieldNames ? [...section.fieldNames] : undefined,
-    behavior: section.behavior ? JSON.parse(JSON.stringify(section.behavior)) : undefined
+    behavior: section.behavior ? cloneJson(section.behavior) : undefined
   };
 }
 
@@ -40,7 +44,7 @@ function enrichFieldDefinition(
 ): TemplateSectionBehaviorFieldConfig {
   const patch = patches[field.label.trim()];
   if (!patch) {
-    return JSON.parse(JSON.stringify(field)) as TemplateSectionBehaviorFieldConfig;
+    return cloneJson(field);
   }
 
   return {
@@ -56,7 +60,7 @@ function enrichGroupDefinition(
 ): TemplateSectionBehaviorGroupConfig {
   const patch = patches[group.label.trim()];
   if (!patch) {
-    return JSON.parse(JSON.stringify(group)) as TemplateSectionBehaviorGroupConfig;
+    return cloneJson(group);
   }
 
   return {
@@ -83,7 +87,7 @@ export function applyGenericTemplateSectionRules(
         shouldEnrichFieldBlock || shouldEnrichGroupedFieldBlock
           ? enrichBehaviorWithRulePack(cloned.behavior, cloned.title, rulePackConfig)
           : cloned.behavior
-          ? JSON.parse(JSON.stringify(cloned.behavior))
+          ? cloneJson(cloned.behavior)
           : undefined
     };
   });
@@ -123,6 +127,6 @@ function enrichBehaviorWithRulePack(
     case "task_list":
     case "table_block":
     case "mixed_field_block":
-      return JSON.parse(JSON.stringify(behavior)) as TemplateSectionBehaviorConfig;
+      return cloneJson(behavior);
   }
 }
