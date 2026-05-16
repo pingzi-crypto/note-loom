@@ -110,6 +110,31 @@ interface FieldReviewItem {
 
 type ReviewItem = TemplateReviewItem;
 
+type SectionDraftWarningSummary = { message: string; titles: string[] };
+
+function stripTrailingListBoundaryPunctuation(value: string): string {
+  return value.trim().replace(/[\s:：,，;；.。!！?？、]+$/u, "");
+}
+
+export function formatSectionDraftWarningSummary(warning: SectionDraftWarningSummary): string {
+  const visibleTitles = warning.titles.slice(0, 5).join("、");
+  const hiddenCount = warning.titles.length - 5;
+  const titleText = hiddenCount > 0
+    ? `${visibleTitles} 等 ${hiddenCount} 个区块`
+    : visibleTitles;
+  const message = stripTrailingListBoundaryPunctuation(warning.message);
+
+  if (!message) {
+    return titleText;
+  }
+
+  if (!titleText) {
+    return message;
+  }
+
+  return `${message}：${titleText}`;
+}
+
 function formatReviewStatus(
   language: ReturnType<SettingsService["getSettings"]>["language"],
   status: TemplateFieldReviewStatus
@@ -430,7 +455,9 @@ export class GenerateModal extends Modal {
       .setName(t(settings.language, "source_note"))
       .setDesc(this.sourceFile.path);
 
-    createInfoSetting(basicSection)
+    const templateSetting = createInfoSetting(basicSection);
+    templateSetting.settingEl.addClass("note-loom-generate-inline-control");
+    templateSetting
       .setName(t(settings.language, "selected_template"))
       .addDropdown((dropdown) => {
         this.enabledTemplates.forEach((template) => {
@@ -720,13 +747,8 @@ export class GenerateModal extends Modal {
     }));
   }
 
-  private formatSectionDraftWarningGroup(warning: { message: string; titles: string[] }): string {
-    const visibleTitles = warning.titles.slice(0, 5).join("、");
-    const hiddenCount = warning.titles.length - 5;
-    const titleText = hiddenCount > 0
-      ? `${visibleTitles} 等 ${hiddenCount} 个区块`
-      : visibleTitles;
-    return `${warning.message}：${titleText}`;
+  private formatSectionDraftWarningGroup(warning: SectionDraftWarningSummary): string {
+    return formatSectionDraftWarningSummary(warning);
   }
 
   private getIntegrityReport(): StructuralMappingIntegrityReport | null {
@@ -984,6 +1006,7 @@ export class GenerateModal extends Modal {
 
     generateSections.forEach((section) => {
       const setting = createInfoSetting(container);
+      setting.settingEl.addClass("note-loom-card-row-with-icon");
       setting.setName(section.title).setDesc(this.describeActiveSection(section));
       setting.addExtraButton((button) => {
         button.setIcon("dot-network");
@@ -1306,13 +1329,12 @@ export class GenerateModal extends Modal {
     const reviewView = buildPendingFieldReviewViewModel(items, sectionItems, this.fieldViewMode);
 
     if (this.fieldViewMode === "review") {
-      this.renderPendingFieldStateCard(container, reviewView.hasPendingFields);
+      this.renderPendingFieldStateCard(container, reviewView.hasPendingFields, "review");
       if (!reviewView.hasPendingFields) {
         return;
       }
     } else {
-      const toolbar = container.createDiv({ cls: "note-loom-section-toolbar" });
-      this.renderPendingFieldActionButtons(toolbar, true);
+      this.renderPendingFieldStateCard(container, reviewView.hasPendingFields, "all");
     }
 
     if (reviewView.visibleItems.length === 0) {
@@ -1332,27 +1354,41 @@ export class GenerateModal extends Modal {
     });
   }
 
-  private renderPendingFieldStateCard(container: HTMLElement, hasPendingFields: boolean): void {
+  private renderPendingFieldStateCard(
+    container: HTMLElement,
+    hasPendingFields: boolean,
+    mode: FieldViewMode
+  ): void {
     const language = this.settingsService.getSettings().language;
+    const hasDivider = mode === "all" || hasPendingFields;
     const card = container.createDiv({
-      cls: `note-loom-pending-state-card ${hasPendingFields ? "is-action-needed has-divider" : "is-ready"}`
+      cls: [
+        "note-loom-pending-state-card",
+        hasPendingFields ? "is-action-needed" : "is-ready",
+        mode === "all" ? "is-all-fields" : "is-review-fields",
+        hasDivider ? "has-divider" : ""
+      ].filter(Boolean).join(" ")
     });
     const info = card.createDiv({ cls: "note-loom-pending-state-info" });
     info.createEl("p", {
       cls: "note-loom-section-note",
-      text: hasPendingFields
-        ? t(language, "pending_fields_action_title")
-        : t(language, "pending_fields_ready_title")
+      text: mode === "all"
+        ? t(language, "pending_fields_all_title")
+        : hasPendingFields
+          ? t(language, "pending_fields_action_title")
+          : t(language, "pending_fields_ready_title")
     });
     info.createEl("p", {
       cls: "note-loom-section-note",
-      text: hasPendingFields
-        ? t(language, "pending_fields_action_desc")
-        : t(language, "pending_fields_ready_desc")
+      text: mode === "all"
+        ? t(language, "pending_fields_all_desc")
+        : hasPendingFields
+          ? t(language, "pending_fields_action_desc")
+          : t(language, "pending_fields_ready_desc")
     });
 
     const actions = card.createDiv({ cls: "note-loom-pending-state-actions" });
-    this.renderPendingFieldActionButtons(actions, hasPendingFields);
+    this.renderPendingFieldActionButtons(actions, mode === "all" || hasPendingFields);
   }
 
   private renderPendingFieldActionButtons(container: HTMLElement, includeTraceToggle: boolean): void {

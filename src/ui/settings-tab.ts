@@ -105,7 +105,9 @@ export class TemplateExtractorSettingTab extends PluginSettingTab {
       }
     });
 
-    createInfoSetting(templateImportGroup)
+    const templateImportSetting = createInfoSetting(templateImportGroup);
+    templateImportSetting.settingEl.addClass("note-loom-action-only-setting");
+    templateImportSetting
       .setName(t(settings.language, "batch_import_templates"))
       .setDesc(t(settings.language, "batch_import_templates_desc"))
       .addButton((button) =>
@@ -297,7 +299,9 @@ export class TemplateExtractorSettingTab extends PluginSettingTab {
       "note-loom-three-column-group"
     );
 
-    createInfoSetting(languageGroup)
+    const languageSetting = createInfoSetting(languageGroup);
+    languageSetting.settingEl.addClass("note-loom-centered-setting");
+    languageSetting
       .setName(t(settings.language, "language"))
       .addDropdown((dropdown) => {
         dropdown

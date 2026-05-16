@@ -390,6 +390,7 @@ export class TemplateConfigModal extends Modal {
 
     const scannedOptions = this.getScannedFieldOptions(field.name);
     if (scannedOptions.length > 0) {
+      fieldSetting.settingEl.addClass("note-loom-template-field-item-has-options");
       const fieldOptionsSetting = createInfoSetting(container);
       fieldOptionsSetting.settingEl.addClass("note-loom-template-field-item");
       fieldOptionsSetting.settingEl.addClass("note-loom-template-field-options-item");

@@ -1489,7 +1489,7 @@ export function resolveMatchedFieldRowState(
   result: FieldMatchResult,
   autoState: TemplateFieldAutoState | undefined
 ): MatchedFieldRowState {
-  const pendingReviewMode = fieldViewMode === "review" && reviewStatus === "unmatched";
+  const pendingReviewMode = reviewStatus === "unmatched";
   const showSecondaryAction = !pendingReviewMode && shouldShowTemplateFieldResetAction(result, autoState);
   const showToggle = !pendingReviewMode;
 

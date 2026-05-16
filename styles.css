@@ -10,6 +10,9 @@
 .note-loom-template-config-modal {
   width: 760px;
   max-width: calc(100vw - 48px);
+  --note-loom-card-left-column: 320px;
+  --note-loom-card-middle-gap: 120px;
+  --note-loom-card-right-column: 500px;
 }
 
 .note-loom-generate-modal {
@@ -316,10 +319,6 @@
   height: 100%;
 }
 
-.note-loom-info-stack:not(:has(> .setting-item-description:not(:empty), > .note-loom-info-stack-line + .note-loom-info-stack-line)) {
-  justify-content: center;
-}
-
 .note-loom-info-stack > .setting-item-name,
 .note-loom-info-stack > .setting-item-description,
 .note-loom-info-stack > .note-loom-info-stack-line {
@@ -337,36 +336,36 @@
 }
 
 .note-loom-card-row {
-  align-items: stretch !important;
+  align-items: stretch;
 }
 
 .note-loom-card-row.note-loom-card-row-single-left {
-  grid-template-columns: minmax(0, 1fr) !important;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .note-loom-card-row.note-loom-card-row-single-left .note-loom-card-control {
-  display: none !important;
+  display: none;
 }
 
 .note-loom-card-row.note-loom-card-row-single-left .setting-item-info {
   grid-column: 1 / -1;
   width: 100%;
-  max-width: none !important;
+  max-width: none;
   padding-right: 0;
 }
 
 .note-loom-card-row.note-loom-card-row-single-right {
-  grid-template-columns: minmax(0, 1fr) !important;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .note-loom-card-row.note-loom-card-row-single-right .note-loom-card-info {
-  display: none !important;
+  display: none;
 }
 
 .note-loom-card-row.note-loom-card-row-single-right .setting-item-control {
   grid-column: 1 / -1;
   width: 100%;
-  max-width: none !important;
+  max-width: none;
   justify-self: stretch;
 }
 
@@ -419,8 +418,10 @@
 }
 
 .note-loom-settings .setting-item-control input[type="text"],
+.note-loom-settings .setting-item-control textarea,
 .note-loom-settings .setting-item-control select,
 .note-loom-modal .setting-item-control input[type="text"],
+.note-loom-modal .setting-item-control textarea,
 .note-loom-modal .setting-item-control select {
   box-sizing: border-box;
   width: 100%;
@@ -430,6 +431,7 @@
   max-inline-size: 100%;
   min-height: var(--note-loom-control-height);
   font-size: var(--note-loom-control-font-size);
+  font-weight: 400;
   border-radius: var(--note-loom-control-radius);
 }
 
@@ -722,7 +724,7 @@
 
 .note-loom-settings .note-loom-three-column-group .note-loom-template-item {
   grid-template-columns: minmax(0, 1fr) auto;
-  column-gap: 24px;
+  gap: 24px;
 }
 
 .note-loom-settings .note-loom-three-column-group .note-loom-template-item .setting-item-info {
@@ -772,6 +774,29 @@
   line-height: 1.4;
 }
 
+.note-loom-settings .note-loom-three-column-group .note-loom-centered-setting {
+  align-items: center;
+}
+
+.note-loom-settings .note-loom-three-column-group .note-loom-centered-setting .setting-item-info,
+.note-loom-settings .note-loom-three-column-group .note-loom-centered-setting .setting-item-control {
+  align-self: center;
+}
+
+.note-loom-settings .note-loom-three-column-group .note-loom-centered-setting .note-loom-info-stack {
+  justify-content: center;
+  height: auto;
+}
+
+.note-loom-settings
+  .note-loom-three-column-group
+  .note-loom-centered-setting
+  .note-loom-info-stack
+  > .setting-item-name {
+  display: flex;
+  align-items: center;
+}
+
 .note-loom-settings .note-loom-three-column-group .note-loom-path-setting {
   display: grid;
 }
@@ -785,8 +810,8 @@
   justify-content: stretch;
 }
 
-.note-loom-settings .note-loom-three-column-group .note-loom-form-group .setting-item .setting-item-control:has(> button:only-child),
-.note-loom-settings .note-loom-three-column-group.note-loom-form-group .setting-item .setting-item-control:has(> button:only-child) {
+.note-loom-settings .note-loom-three-column-group .note-loom-action-only-setting .setting-item-control,
+.note-loom-settings .note-loom-three-column-group.note-loom-form-group .note-loom-action-only-setting .setting-item-control {
   justify-content: flex-end;
 }
 
@@ -851,8 +876,8 @@
 }
 
 .note-loom-compact-setting {
-  padding-block: 12px !important;
-  margin-bottom: 0 !important;
+  padding-block: 12px;
+  margin-bottom: 0;
 }
 
 .note-loom-compact-setting .setting-item-info {
@@ -868,7 +893,7 @@
 }
 
 .note-loom-action-setting {
-  padding-block: 12px !important;
+  padding-block: 12px;
 }
 
 .note-loom-action-setting .setting-item-control > button {
@@ -879,20 +904,14 @@
   padding-right: 18px;
 }
 
-.note-loom-template-config-modal {
-  --note-loom-card-left-column: 320px;
-  --note-loom-card-middle-gap: 120px;
-  --note-loom-card-right-column: 500px;
-}
-
 .note-loom-generate-modal .setting-item-info {
   padding-right: 18px;
 }
 
 .note-loom-generate-modal .setting-item-name {
-  font-size: 14px !important;
-  line-height: 1.4 !important;
-  font-weight: 400 !important;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 400;
 }
 
 .note-loom-generate-modal .setting-item-description {
@@ -910,13 +929,13 @@
 }
 
 .note-loom-generate-modal .note-loom-modal-footer > button {
-  border-radius: var(--note-loom-control-radius) !important;
-  border: 1px solid var(--note-loom-control-border) !important;
-  box-shadow: none !important;
+  border-radius: var(--note-loom-control-radius);
+  border: 1px solid var(--note-loom-control-border);
+  box-shadow: none;
 }
 
 .note-loom-generate-modal .note-loom-modal-footer > button.mod-cta {
-  border-radius: var(--note-loom-control-radius) !important;
+  border-radius: var(--note-loom-control-radius);
 }
 
 .note-loom-modal .note-loom-modal-section {
@@ -1007,6 +1026,7 @@
   border-color: var(--note-loom-control-border);
   min-height: var(--note-loom-control-height);
   font-size: var(--note-loom-control-font-size);
+  font-weight: 400;
   box-shadow: none;
 }
 
@@ -1047,12 +1067,18 @@
   margin: 0;
   min-height: 72px;
   padding: 0;
-  border: 0 !important;
-  border-top: 0 !important;
-  border-bottom: 0 !important;
+  border: 0;
+  border-top: 0;
+  border-bottom: 0;
   border-radius: 0;
   background: transparent;
-  box-shadow: none !important;
+  box-shadow: none;
+}
+
+.note-loom-template-config-modal
+  .note-loom-template-field-list
+  .setting-item.note-loom-template-field-item:not(:first-child):not(.note-loom-template-field-options-item) {
+  border-top: 1px solid color-mix(in srgb, var(--background-modifier-border) 72%, transparent);
 }
 
 .note-loom-template-config-modal .note-loom-field-config-group {
@@ -1063,17 +1089,28 @@
   border-bottom: 0;
 }
 
-.note-loom-template-config-modal .note-loom-template-field-item:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--background-modifier-border) 72%, transparent);
+.note-loom-template-config-modal .note-loom-template-field-item::before,
+.note-loom-template-config-modal .note-loom-template-field-item::after,
+.note-loom-template-config-modal
+  .note-loom-setting-group.note-loom-field-config-group
+  .setting-item::after,
+.note-loom-template-config-modal
+  .note-loom-field-config-group
+  .note-loom-template-field-item::before,
+.note-loom-template-config-modal
+  .note-loom-field-config-group
+  .note-loom-template-field-item::after {
+  content: none;
+  display: none;
+  border: 0;
 }
 
-.note-loom-template-config-modal .note-loom-template-field-item:has(+ .note-loom-template-field-options-item)::after {
+.note-loom-template-config-modal
+  .note-loom-setting-group.note-loom-field-config-group
+  .setting-item.note-loom-template-field-item::after {
+  content: none;
   display: none;
+  border: 0;
 }
 
 .note-loom-template-config-modal .note-loom-template-field-item:hover {
@@ -1085,10 +1122,10 @@
 
 .note-loom-template-config-modal .note-loom-template-field-item .setting-item-info,
 .note-loom-template-config-modal .note-loom-template-field-item .setting-item-control {
-  border: 0 !important;
-  border-top: 0 !important;
-  border-bottom: 0 !important;
-  box-shadow: none !important;
+  border: 0;
+  border-top: 0;
+  border-bottom: 0;
+  box-shadow: none;
 }
 
 .note-loom-template-config-modal .note-loom-template-field-item .setting-item-info {
@@ -1103,6 +1140,7 @@
 .note-loom-template-config-modal .note-loom-template-field-item .note-loom-info-stack {
   justify-content: center;
   gap: 3px;
+  height: auto;
   width: 100%;
 }
 
@@ -1155,6 +1193,7 @@
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
+  align-content: center;
   align-self: center;
   gap: 10px;
   justify-content: stretch;
@@ -1168,16 +1207,18 @@
   grid-row: 1;
   display: flex;
   align-items: center;
-  min-height: 24px;
-  gap: 0;
+  justify-content: flex-end;
+  min-height: 32px;
+  gap: 8px;
   max-width: var(--note-loom-card-right-column);
 }
 
 .note-loom-template-config-modal .note-loom-template-field-options-item {
-  min-height: 0;
-  margin-top: -16px;
+  position: relative;
+  min-height: 44px;
+  margin-top: 0;
   padding-top: 0;
-  padding-bottom: 0;
+  padding-bottom: 12px;
   align-items: center;
   grid-template-rows: auto;
 }
@@ -1349,9 +1390,6 @@
   margin-inline: var(--note-loom-settings-inset);
   padding-top: 6px;
   padding-bottom: 6px;
-}
-
-.note-loom-semantic-section {
   margin-bottom: 10px;
 }
 
@@ -1460,6 +1498,7 @@
   width: 100%;
   min-width: 0;
   max-width: 100%;
+  font-weight: 400;
   box-sizing: border-box;
 }
 
@@ -1528,9 +1567,9 @@
 }
 
 .note-loom-structural-rule-modal .note-loom-semantic-enum-option-heading {
-  font-size: 18px !important;
-  line-height: 1.35 !important;
-  font-weight: 450 !important;
+  font-size: 18px;
+  line-height: 1.35;
+  font-weight: 450;
 }
 
 .note-loom-template-config-modal .note-loom-semantic-enum-description {
@@ -1571,7 +1610,7 @@
 }
 
 .note-loom-template-config-modal .setting-item-name {
-  font-weight: 400 !important;
+  font-weight: 400;
   font-size: 14px;
   line-height: 1.4;
 }
@@ -1581,9 +1620,9 @@
 .note-loom-template-config-modal .note-loom-action-setting .setting-item-name,
 .note-loom-template-config-modal .note-loom-compact-setting .setting-item-name,
 .note-loom-template-config-modal .note-loom-path-setting .setting-item-name {
-  font-size: 14px !important;
-  line-height: 1.4 !important;
-  font-weight: 400 !important;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 400;
 }
 
 .note-loom-template-config-modal .note-loom-modal-heading,
@@ -1625,7 +1664,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   align-items: center;
-  column-gap: 12px;
+  gap: 12px;
   margin-bottom: 8px;
   padding-left: 0;
   padding-right: 0;
@@ -1643,9 +1682,6 @@
   display: grid;
   gap: 8px;
   margin-top: 10px;
-}
-
-.note-loom-template-config-modal .note-loom-structural-rule-collapsible-group {
   overflow: hidden;
 }
 
@@ -1668,7 +1704,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  column-gap: 12px;
+  gap: 12px;
   padding-left: 0;
   padding-right: 0;
 }
@@ -1821,7 +1857,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  column-gap: 12px;
+  gap: 12px;
   min-height: 32px;
 }
 
@@ -1943,15 +1979,15 @@
 }
 
 .note-loom-structural-rule-modal .note-loom-structural-rule-chip-remove {
-  min-width: 20px !important;
-  min-height: 20px !important;
-  padding: 0 !important;
-  border: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
+  min-width: 20px;
+  min-height: 20px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
   color: var(--text-muted);
-  font-size: 14px !important;
-  line-height: 1 !important;
+  font-size: 14px;
+  line-height: 1;
 }
 
 .note-loom-structural-rule-modal .note-loom-structural-rule-add-row {
@@ -1975,7 +2011,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  column-gap: 12px;
+  gap: 12px;
   padding: 10px 0;
 }
 
@@ -2060,13 +2096,13 @@
 }
 
 .note-loom-template-config-modal .note-loom-modal-footer > button {
-  border-radius: var(--note-loom-control-radius) !important;
-  border: 1px solid var(--note-loom-control-border) !important;
-  box-shadow: none !important;
+  border-radius: var(--note-loom-control-radius);
+  border: 1px solid var(--note-loom-control-border);
+  box-shadow: none;
 }
 
 .note-loom-template-config-modal .note-loom-modal-footer > button.mod-cta {
-  border-radius: var(--note-loom-control-radius) !important;
+  border-radius: var(--note-loom-control-radius);
 }
 
 .note-loom-generate-actions .setting-item-control {
@@ -2094,18 +2130,18 @@
   align-self: center;
 }
 
-.note-loom-generate-modal .note-loom-card-row:not(.note-loom-field-row):has(.clickable-icon) {
+.note-loom-generate-modal .note-loom-card-row-with-icon:not(.note-loom-field-row) {
   align-items: start;
   min-height: auto;
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
-.note-loom-generate-modal .note-loom-card-row:not(.note-loom-field-row):has(.clickable-icon) .note-loom-card-info {
+.note-loom-generate-modal .note-loom-card-row-with-icon:not(.note-loom-field-row) .note-loom-card-info {
   align-self: start;
 }
 
-.note-loom-generate-modal .note-loom-card-row:not(.note-loom-field-row):has(.clickable-icon) .note-loom-info-stack {
+.note-loom-generate-modal .note-loom-card-row-with-icon:not(.note-loom-field-row) .note-loom-info-stack {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -2113,8 +2149,8 @@
   height: auto;
 }
 
-.note-loom-generate-modal .note-loom-card-row:not(.note-loom-field-row):has(.clickable-icon) .note-loom-info-stack > .setting-item-name,
-.note-loom-generate-modal .note-loom-card-row:not(.note-loom-field-row):has(.clickable-icon) .note-loom-info-stack > .setting-item-description {
+.note-loom-generate-modal .note-loom-card-row-with-icon:not(.note-loom-field-row) .note-loom-info-stack > .setting-item-name,
+.note-loom-generate-modal .note-loom-card-row-with-icon:not(.note-loom-field-row) .note-loom-info-stack > .setting-item-description {
   flex: 0 0 auto;
   min-height: auto;
   margin: 0;
@@ -2163,7 +2199,7 @@
   justify-self: stretch;
 }
 
-.note-loom-generate-modal .note-loom-card-row:not(.note-loom-field-row):has(.clickable-icon) .note-loom-card-control {
+.note-loom-generate-modal .note-loom-card-row-with-icon:not(.note-loom-field-row) .note-loom-card-control {
   align-self: start;
   align-items: flex-start;
   padding-top: 2px;
@@ -2192,7 +2228,8 @@
   justify-content: flex-end;
   gap: 10px;
   width: 100%;
-  max-width: 420px;
+  max-width: min(420px, 100%);
+  margin-left: auto;
 }
 
 .note-loom-generate-modal .note-loom-generate-inline-control .setting-item-control > select,
@@ -2200,18 +2237,22 @@
   flex: 1 1 auto;
   min-width: 0;
   width: 100%;
-  max-width: calc(100% - 94px);
+  max-width: 100%;
 }
 
-.note-loom-generate-modal .note-loom-generate-inline-control .setting-item-control:has(> input[type="text"]:only-child) > input[type="text"],
-.note-loom-generate-modal .note-loom-generate-inline-control .setting-item-control:has(> select:only-child) > select {
-  width: 100%;
-  max-width: 100%;
+.note-loom-generate-modal .note-loom-generate-inline-control .setting-item-control > select:only-child,
+.note-loom-generate-modal .note-loom-generate-inline-control .setting-item-control > input[type="text"]:only-child {
+  flex: 0 0 100%;
+}
+
+.note-loom-generate-modal .note-loom-generate-inline-control .setting-item-control > select {
+  direction: ltr;
+  text-overflow: ellipsis;
 }
 
 .note-loom-generate-modal .note-loom-generate-inline-control .setting-item-control > button {
   flex: 0 0 auto;
-  min-width: 84px !important;
+  min-width: 70px;
   align-self: center;
 }
 
@@ -2222,10 +2263,10 @@
 
 .note-loom-generate-modal .setting-item-control > button,
 .note-loom-generate-modal .note-loom-field-action {
-  min-width: 68px !important;
-  padding-inline: 14px !important;
-  font-size: var(--note-loom-control-font-size) !important;
-  border-radius: var(--note-loom-control-radius) !important;
+  min-width: 68px;
+  padding-inline: 14px;
+  font-size: var(--note-loom-control-font-size);
+  border-radius: var(--note-loom-control-radius);
 }
 
 .note-loom-generate-modal .note-loom-runtime-flag-row {
@@ -2328,13 +2369,11 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--note-loom-generate-content-gap-lg);
-  padding-top: var(--note-loom-generate-content-gap-lg);
-  padding-bottom: var(--note-loom-generate-content-gap-lg);
-  margin-top: var(--note-loom-generate-content-gap-sm);
   position: relative;
+  width: 100%;
 }
 
-.note-loom-generate-modal .note-loom-integrity-actions::before {
+.note-loom-generate-modal .note-loom-integrity-action-row::before {
   content: "";
   position: absolute;
   left: 0;
@@ -2348,12 +2387,18 @@
 }
 
 .note-loom-generate-modal .note-loom-integrity-action-row {
+  position: relative;
   margin: 0;
+  padding-block: var(--note-loom-generate-content-gap-lg);
 }
 
 .note-loom-generate-modal .note-loom-integrity-action-row .setting-item-info,
 .note-loom-generate-modal .note-loom-integrity-action-row .setting-item-name.note-loom-note-row-text {
   width: 100%;
+}
+
+.note-loom-generate-modal .note-loom-integrity-action-row .setting-item-info {
+  justify-content: center;
 }
 
 .note-loom-generate-modal .note-loom-learning-detail-list {
@@ -2366,7 +2411,7 @@
 .note-loom-generate-modal .note-loom-learning-detail-item {
   display: grid;
   grid-template-columns: var(--note-loom-generate-learning-detail-columns);
-  column-gap: var(--note-loom-generate-content-gap-lg);
+  gap: var(--note-loom-generate-content-gap-lg);
   row-gap: var(--note-loom-generate-learning-detail-row-gap);
   align-items: start;
   font-size: var(--note-loom-generate-copy-font-size);
@@ -2390,7 +2435,7 @@
     );
   justify-content: space-between;
   align-items: center;
-  column-gap: 20px;
+  gap: 20px;
 }
 
 .note-loom-generate-modal .note-loom-run-diff-header > .note-loom-section-note {
@@ -2440,7 +2485,7 @@
 .note-loom-generate-modal .note-loom-run-diff-row {
   display: grid;
   grid-template-columns: var(--note-loom-generate-run-diff-row-columns);
-  column-gap: 0;
+  gap: 0;
   row-gap: var(--note-loom-generate-run-diff-row-gap);
   align-items: var(--note-loom-generate-run-diff-row-align-items);
   font-size: var(--note-loom-generate-copy-font-size);
@@ -2531,7 +2576,7 @@
 .note-loom-generate-modal .note-loom-pending-state-card {
   display: grid;
   grid-template-columns: var(--note-loom-generate-pending-state-columns);
-  column-gap: 12px;
+  gap: 12px;
   row-gap: var(--note-loom-generate-pending-state-row-gap);
   align-items: center;
   padding: 10px 0;
@@ -2540,6 +2585,11 @@
 
 .note-loom-generate-modal .note-loom-pending-state-card.is-action-needed {
   padding-bottom: 14px;
+  margin-bottom: 6px;
+}
+
+.note-loom-generate-modal .note-loom-pending-state-card.is-all-fields {
+  padding-block: 10px 14px;
   margin-bottom: 6px;
 }
 
@@ -2568,6 +2618,13 @@
   color: var(--text-muted);
 }
 
+.note-loom-generate-modal
+  .note-loom-pending-state-info
+  > .note-loom-section-note:first-child {
+  color: var(--text-normal);
+  font-weight: 600;
+}
+
 .note-loom-generate-modal .note-loom-pending-state-actions {
   display: flex;
   flex-wrap: wrap;
@@ -2588,7 +2645,7 @@
   display: grid;
   grid-template-columns: var(--note-loom-generate-integrity-row-columns);
   align-items: center;
-  column-gap: var(--note-loom-generate-content-gap-lg);
+  gap: var(--note-loom-generate-content-gap-lg);
   padding: var(--note-loom-generate-content-gap-lg) 0;
   position: relative;
   row-gap: var(--note-loom-generate-integrity-row-gap);
@@ -2605,6 +2662,10 @@
 
 .note-loom-generate-modal .note-loom-integrity-row-info {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--note-loom-generate-content-gap-sm);
 }
 
 .note-loom-generate-modal .note-loom-integrity-row-title {
@@ -2629,7 +2690,7 @@
 .note-loom-generate-modal .note-loom-integrity-row-meta,
 .note-loom-generate-modal .note-loom-integrity-row-value,
 .note-loom-generate-modal .note-loom-integrity-row-warning {
-  margin-top: var(--note-loom-generate-content-gap-sm);
+  margin: 0;
   font-size: var(--note-loom-generate-copy-font-size);
   line-height: var(--note-loom-generate-copy-line-height);
   font-weight: var(--note-loom-generate-copy-font-weight);
@@ -2655,8 +2716,8 @@
 
 .note-loom-generate-modal .note-loom-field-row {
   --note-loom-field-row-columns: minmax(140px, 180px) minmax(0, 1fr);
-  --note-loom-field-row-control-columns: minmax(0, 1fr) 96px;
-  --note-loom-field-row-control-gap: 6px 4px;
+  --note-loom-field-row-control-columns: minmax(0, 1fr) max-content;
+  --note-loom-field-row-control-gap: 8px 10px;
   --note-loom-field-row-control-align-items: center;
   --note-loom-field-row-control-align-content: center;
   align-items: stretch;
@@ -2694,23 +2755,23 @@
 }
 
 .note-loom-generate-modal .note-loom-field-row .setting-item-control {
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-areas:
-    "textarea toggle"
-    "textarea apply"
-    "textarea secondary";
+  position: relative;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, auto);
+  grid-template-areas: "textarea";
   min-height: calc(
     var(--note-loom-generate-field-row-height) +
       (var(--note-loom-generate-field-row-block-padding) * 2)
   );
+  padding-right: 92px;
   padding-block: var(--note-loom-generate-field-row-block-padding);
   box-sizing: border-box;
 }
 
 .note-loom-generate-modal .note-loom-field-row .setting-item-control > .checkbox-container {
-  grid-area: toggle;
-  justify-self: end;
-  align-self: center;
+  position: absolute;
+  right: 0;
+  top: calc(50% - 53px);
 }
 
 .note-loom-generate-modal .note-loom-field-row .setting-item-control > textarea {
@@ -2728,38 +2789,69 @@
 }
 
 .note-loom-generate-modal .note-loom-field-row .setting-item-control > .note-loom-field-apply-action {
-  grid-area: apply;
-  justify-self: end;
-  align-self: center;
+  position: absolute;
+  right: 0;
+  top: calc(50% - 15px);
+  min-width: 72px;
 }
 
 .note-loom-generate-modal .note-loom-field-row .setting-item-control > .note-loom-field-secondary-action {
-  grid-area: secondary;
-  justify-self: end;
-  align-self: center;
+  position: absolute;
+  right: 0;
+  top: calc(50% + 23px);
+  min-width: 72px;
 }
 
 .note-loom-generate-modal .note-loom-field-action.is-hidden {
-  display: none !important;
+  display: none;
 }
 
 .note-loom-generate-modal .note-loom-field-row.note-loom-field-row-layout-toggle-primary .setting-item-control {
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas:
-    "textarea toggle"
-    "textarea apply";
+  grid-template-areas: "textarea";
+}
+
+.note-loom-generate-modal
+  .note-loom-field-row.note-loom-field-row-layout-toggle-primary
+  .setting-item-control
+  > .checkbox-container {
+  top: calc(50% - 34px);
+}
+
+.note-loom-generate-modal
+  .note-loom-field-row.note-loom-field-row-layout-toggle-primary
+  .setting-item-control
+  > .note-loom-field-apply-action {
+  top: calc(50% + 4px);
 }
 
 .note-loom-generate-modal .note-loom-field-row.note-loom-field-row-layout-actions .setting-item-control {
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas:
-    "textarea apply"
-    "textarea secondary";
+  grid-template-areas: "textarea";
+}
+
+.note-loom-generate-modal
+  .note-loom-field-row.note-loom-field-row-layout-actions
+  .setting-item-control
+  > .note-loom-field-apply-action {
+  top: calc(50% - 34px);
+}
+
+.note-loom-generate-modal
+  .note-loom-field-row.note-loom-field-row-layout-actions
+  .setting-item-control
+  > .note-loom-field-secondary-action {
+  top: calc(50% + 4px);
 }
 
 .note-loom-generate-modal .note-loom-field-row.note-loom-field-row-layout-primary .setting-item-control {
-  grid-template-rows: 1fr;
   grid-template-areas: "textarea apply";
+}
+
+.note-loom-generate-modal
+  .note-loom-field-row.note-loom-field-row-layout-primary
+  .setting-item-control
+  > .note-loom-field-apply-action {
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .note-loom-preview {
@@ -2788,8 +2880,13 @@
   resize: none;
 }
 
-.note-loom-settings .setting-item-name,
 .note-loom-modal .setting-item-name {
+  line-height: 1.4;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.note-loom-settings .setting-item-name {
   line-height: 1.3;
   font-size: 16px;
   font-weight: 600;
@@ -2884,6 +2981,10 @@
     --note-loom-field-row-control-columns: auto minmax(0, 1fr);
   }
 
+  .note-loom-generate-modal .note-loom-field-row .setting-item-control {
+    --note-loom-field-row-control-columns: minmax(0, 1fr) max-content;
+  }
+
   .note-loom-template-config-modal .note-loom-template-field-item .setting-item-control {
     width: 100%;
   }
@@ -2924,6 +3025,7 @@
     --note-loom-generate-pending-state-actions-justify: flex-start;
     --note-loom-generate-integrity-row-columns: 1fr;
     --note-loom-generate-integrity-row-gap: 8px;
+    --note-loom-preview-width: calc(100% - (var(--note-loom-settings-inset) * 2));
   }
 
   .note-loom-settings {
@@ -3059,17 +3161,13 @@
 
   .note-loom-generate-modal .note-loom-generate-inline-control .setting-item-control > button {
     width: auto;
-    min-width: 84px !important;
+    min-width: 84px;
   }
 
   .note-loom-modal-footer {
     flex-direction: column-reverse;
     align-items: stretch;
   }
-
-.note-loom-generate-modal {
-  --note-loom-preview-width: calc(100% - (var(--note-loom-settings-inset) * 2));
-}
 
 .note-loom-runtime-flag {
   padding-left: 0;
