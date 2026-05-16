@@ -1,7 +1,7 @@
 {
   "id": "note-loom",
   "name": "Note Loom",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "minAppVersion": "1.4.0",
   "description": "Weave free-form notes into structured notes with your own templates, fields, tables, and checklists.",
   "author": "pingzi-crypto",
